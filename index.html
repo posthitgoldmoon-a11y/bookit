@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bookit — AI 스마트 상담 솔루션</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1a1150;
+      --accent: #6c63ff;
+      --accent2: #ff6584;
+      --accent3: #43e97b;
+      --white: #ffffff;
+      --light: #f7f8ff;
+      --gray: #888;
+      --border: #e8e8f0;
+      --shadow: 0 4px 24px rgba(108,99,255,.10);
+      --shadow-lg: 0 12px 48px rgba(108,99,255,.18);
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Noto Sans KR',sans-serif;color:#222;background:var(--white);}
+    a{text-decoration:none;color:inherit;}
+
+    /* NAV */
+    .nav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+    .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+    .nav-logo img{height:36px;object-fit:contain;}
+    .nav-links{display:flex;gap:2rem;font-size:.92rem;font-weight:500;}
+    .nav-links a{color:#444;transition:color .2s;}
+    .nav-links a:hover{color:var(--accent);}
+    .nav-cta{background:var(--accent);color:#fff;padding:.55rem 1.4rem;border-radius:50px;font-size:.9rem;font-weight:700;transition:all .2s;}
+    .nav-cta:hover{background:#5a52e0;transform:translateY(-1px);}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+    .hamburger span{display:block;width:24px;height:2px;background:#333;border-radius:2px;}
+
+    /* HERO */
+    .hero{min-height:100vh;background:linear-gradient(135deg,#1a1150 0%,#2d1b6e 40%,#1a3a6e 100%);display:flex;align-items:center;padding:8rem 2rem 5rem;position:relative;overflow:hidden;}
+    .hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(108,99,255,.3),transparent 70%);pointer-events:none;}
+    .hero::after{content:'';position:absolute;bottom:-150px;left:-150px;width:500px;height:500px;background:radial-gradient(circle,rgba(67,233,123,.15),transparent 70%);pointer-events:none;}
+    .hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;z-index:1;}
+    .hero-label{display:inline-block;background:rgba(108,99,255,.25);color:#a89fff;border:1px solid rgba(108,99,255,.4);padding:.35rem 1rem;border-radius:50px;font-size:.82rem;font-weight:600;margin-bottom:1.5rem;letter-spacing:1px;}
+    .hero-title{font-size:3.2rem;font-weight:900;color:#fff;line-height:1.2;margin-bottom:1.5rem;}
+    .hero-title span{background:linear-gradient(135deg,#6c63ff,#43e97b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    .hero-desc{font-size:1.1rem;color:rgba(255,255,255,.75);line-height:1.9;margin-bottom:2.5rem;}
+    .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+    .btn-primary{background:var(--accent);color:#fff;padding:.9rem 2rem;border-radius:50px;font-weight:700;font-size:1rem;transition:all .25s;box-shadow:0 4px 20px rgba(108,99,255,.4);}
+    .btn-primary:hover{background:#5a52e0;transform:translateY(-2px);box-shadow:0 8px 30px rgba(108,99,255,.5);}
+    .btn-secondary{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.3);padding:.9rem 2rem;border-radius:50px;font-weight:600;font-size:1rem;transition:all .25s;}
+    .btn-secondary:hover{background:rgba(255,255,255,.2);}
+    .hero-right{display:flex;justify-content:center;align-items:center;}
+    .hero-mockup{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:24px;padding:1.5rem;width:100%;max-width:380px;backdrop-filter:blur(10px);}
+    .mockup-header{display:flex;align-items:center;gap:.8rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:1rem;}
+    .mockup-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#6c63ff,#43e97b);display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+    .mockup-name{color:#fff;font-weight:700;font-size:.95rem;}
+    .mockup-status{color:#43e97b;font-size:.78rem;}
+    .chat-bubble{margin-bottom:.8rem;}
+    .chat-bubble.ai{display:flex;gap:.6rem;align-items:flex-end;}
+    .chat-bubble.user{display:flex;flex-direction:row-reverse;gap:.6rem;align-items:flex-end;}
+    .bubble{padding:.7rem 1rem;border-radius:16px;font-size:.85rem;line-height:1.6;max-width:80%;}
+    .ai .bubble{background:rgba(108,99,255,.3);color:#fff;border-bottom-left-radius:4px;}
+    .user .bubble{background:rgba(255,255,255,.15);color:#fff;border-bottom-right-radius:4px;}
+    .bubble-dot{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#6c63ff,#43e97b);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.8rem;}
+    .typing{display:flex;gap:4px;align-items:center;padding:.7rem 1rem;background:rgba(108,99,255,.3);border-radius:16px;border-bottom-left-radius:4px;width:fit-content;}
+    .typing span{width:6px;height:6px;background:rgba(255,255,255,.6);border-radius:50%;animation:typing .8s infinite;}
+    .typing span:nth-child(2){animation-delay:.15s;}
+    .typing span:nth-child(3){animation-delay:.3s;}
+    @keyframes typing{0%,60%,100%{transform:translateY(0);}30%{transform:translateY(-6px);}}
+    .hero-stats{display:flex;gap:2rem;margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.1);}
+    .stat-item{text-align:center;}
+    .stat-num{font-size:1.6rem;font-weight:900;color:#fff;}
+    .stat-num span{font-size:.9rem;font-weight:400;color:rgba(255,255,255,.6);}
+    .stat-label{font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.2rem;}
+
+    /* SECTION COMMON */
+    .section-wrap{padding:6rem 2rem;}
+    .inner{max-width:1200px;margin:0 auto;}
+    .section-label{display:inline-block;background:linear-gradient(135deg,rgba(108,99,255,.1),rgba(67,233,123,.1));color:var(--accent);border:1px solid rgba(108,99,255,.2);padding:.3rem .9rem;border-radius:50px;font-size:.8rem;font-weight:700;letter-spacing:1px;margin-bottom:1rem;}
+    .section-title{font-size:2.2rem;font-weight:900;color:var(--primary);line-height:1.3;margin-bottom:1rem;}
+    .section-desc{font-size:1.05rem;color:var(--gray);line-height:1.9;}
+    .divider{width:48px;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent3));border-radius:3px;margin-bottom:2rem;}
+
+    /* LOGOS / TRUSTED */
+    .trusted-section{padding:3rem 2rem;background:var(--light);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+    .trusted-label{text-align:center;font-size:.85rem;color:var(--gray);margin-bottom:1.5rem;font-weight:500;}
+    .trusted-logos{display:flex;justify-content:center;align-items:center;gap:3rem;flex-wrap:wrap;}
+    .trusted-logo{font-size:1.1rem;font-weight:800;color:#bbb;letter-spacing:1px;}
+
+    /* FEATURES */
+    .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;}
+    .feat-card{background:var(--white);border:1.5px solid var(--border);border-radius:20px;padding:2rem;transition:all .25s;position:relative;overflow:hidden;}
+    .feat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),var(--accent3));opacity:0;transition:opacity .25s;}
+    .feat-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+    .feat-card:hover::before{opacity:1;}
+    .feat-icon{width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,rgba(108,99,255,.1),rgba(67,233,123,.1));display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1.2rem;}
+    .feat-title{font-size:1.1rem;font-weight:800;color:var(--primary);margin-bottom:.6rem;}
+    .feat-desc{font-size:.92rem;color:var(--gray);line-height:1.8;}
+
+    /* COMPARE */
+    .compare-section{background:linear-gradient(135deg,#1a1150,#2d1b6e);padding:6rem 2rem;}
+    .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem;}
+    .compare-card{border-radius:20px;padding:2.5rem;}
+    .compare-card.old{background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.1);}
+    .compare-card.new{background:linear-gradient(135deg,rgba(108,99,255,.3),rgba(67,233,123,.15));border:1.5px solid rgba(108,99,255,.4);}
+    .compare-title{font-size:1.1rem;font-weight:800;margin-bottom:1.5rem;}
+    .compare-card.old .compare-title{color:rgba(255,255,255,.5);}
+    .compare-card.new .compare-title{color:#a89fff;}
+    .compare-item{display:flex;align-items:center;gap:.8rem;margin-bottom:.9rem;font-size:.92rem;}
+    .compare-card.old .compare-item{color:rgba(255,255,255,.5);}
+    .compare-card.new .compare-item{color:rgba(255,255,255,.9);}
+    .compare-icon{font-size:1.1rem;flex-shrink:0;}
+
+    /* PRICING */
+    .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;}
+    .price-card{background:var(--white);border:2px solid var(--border);border-radius:24px;padding:2.5rem 2rem;text-align:center;transition:all .25s;position:relative;}
+    .price-card.popular{border-color:var(--accent);box-shadow:var(--shadow-lg);}
+    .price-popular-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--accent),var(--accent3));color:#fff;padding:.3rem 1.2rem;border-radius:50px;font-size:.8rem;font-weight:700;white-space:nowrap;}
+    .price-name{font-size:1.1rem;font-weight:800;color:var(--primary);margin-bottom:.3rem;}
+    .price-desc{font-size:.85rem;color:var(--gray);margin-bottom:1.5rem;}
+    .price-amount{font-size:2.4rem;font-weight:900;color:var(--accent);margin-bottom:.3rem;}
+    .price-amount span{font-size:.9rem;font-weight:400;color:var(--gray);}
+    .price-period{font-size:.82rem;color:var(--gray);margin-bottom:1.8rem;}
+    .price-features{text-align:left;margin-bottom:2rem;}
+    .price-feat-item{display:flex;align-items:center;gap:.7rem;font-size:.9rem;color:#444;margin-bottom:.7rem;}
+    .price-feat-item::before{content:'✓';color:var(--accent3);font-weight:700;flex-shrink:0;}
+    .btn-price{display:block;padding:.85rem;border-radius:50px;font-weight:700;font-size:.95rem;transition:all .25s;text-align:center;}
+    .btn-price.outline{border:2px solid var(--accent);color:var(--accent);}
+    .btn-price.outline:hover{background:var(--accent);color:#fff;}
+    .btn-price.filled{background:var(--accent);color:#fff;box-shadow:0 4px 20px rgba(108,99,255,.3);}
+    .btn-price.filled:hover{background:#5a52e0;transform:translateY(-2px);}
+
+    /* REPORT MOCKUP */
+    .report-section{background:var(--light);padding:6rem 2rem;}
+    .report-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+    .report-mockup{background:#fff;border-radius:24px;box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid var(--border);}
+    .report-header{background:linear-gradient(135deg,#1a1150,#2d1b6e);padding:1.2rem 1.5rem;display:flex;align-items:center;gap:.8rem;}
+    .report-header-icon{width:36px;height:36px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:1rem;}
+    .report-header-text{color:#fff;font-weight:700;font-size:.95rem;}
+    .report-body{padding:1.5rem;}
+    .report-date{font-size:.8rem;color:var(--gray);margin-bottom:1rem;text-align:center;}
+    .report-item{background:var(--light);border-radius:12px;padding:1rem 1.2rem;margin-bottom:.8rem;}
+    .report-item-label{font-size:.75rem;color:var(--accent);font-weight:700;margin-bottom:.3rem;}
+    .report-item-value{font-size:.88rem;color:#333;line-height:1.6;}
+    .report-footer{padding:1rem 1.5rem;border-top:1px solid var(--border);text-align:center;font-size:.8rem;color:var(--gray);}
+
+    /* INDUSTRIES */
+    .industry-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem;}
+    .industry-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:1.8rem 1rem;text-align:center;transition:all .25s;cursor:pointer;}
+    .industry-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:var(--shadow);}
+    .industry-icon{font-size:2.5rem;margin-bottom:.8rem;}
+    .industry-name{font-size:.95rem;font-weight:700;color:var(--primary);}
+
+    /* CTA */
+    .cta-section{background:linear-gradient(135deg,#1a1150,#2d1b6e,#1a3a6e);padding:6rem 2rem;text-align:center;position:relative;overflow:hidden;}
+    .cta-section::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(108,99,255,.25),transparent 70%);pointer-events:none;}
+    .cta-title{font-size:2.6rem;font-weight:900;color:#fff;line-height:1.3;margin-bottom:1rem;position:relative;}
+    .cta-desc{font-size:1.05rem;color:rgba(255,255,255,.7);margin-bottom:2.5rem;position:relative;}
+    .cta-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;position:relative;}
+    .btn-cta-main{background:linear-gradient(135deg,var(--accent),var(--accent3));color:#fff;padding:1rem 2.5rem;border-radius:50px;font-weight:800;font-size:1.05rem;transition:all .25s;box-shadow:0 8px 30px rgba(108,99,255,.4);}
+    .btn-cta-main:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(108,99,255,.5);}
+    .btn-cta-sub{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.3);padding:1rem 2.5rem;border-radius:50px;font-weight:600;font-size:1.05rem;transition:all .25s;}
+    .btn-cta-sub:hover{background:rgba(255,255,255,.2);}
+
+    /* FOOTER */
+    .footer{background:#0d0a1e;padding:4rem 2rem 2rem;}
+    .footer-inner{max-width:1200px;margin:0 auto;}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+    .footer-brand img{height:32px;margin-bottom:1rem;}
+    .footer-brand p{font-size:.88rem;color:rgba(255,255,255,.45);line-height:1.8;}
+    .footer-col h4{font-size:.95rem;font-weight:700;color:rgba(255,255,255,.7);margin-bottom:1rem;}
+    .footer-col a{display:block;font-size:.88rem;color:rgba(255,255,255,.4);margin-bottom:.6rem;transition:color .2s;}
+    .footer-col a:hover{color:var(--accent);}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+    .footer-copy{font-size:.82rem;color:rgba(255,255,255,.25);}
+    .footer-links{display:flex;gap:1.5rem;}
+    .footer-links a{font-size:.82rem;color:rgba(255,255,255,.3);transition:color .2s;}
+    .footer-links a:hover{color:var(--accent);}
+
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease;}
+    .reveal.visible{opacity:1;transform:none;}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .nav-links{display:none;}
+      .hamburger{display:flex;}
+      .hero-inner{grid-template-columns:1fr;gap:3rem;}
+      .hero-title{font-size:2.2rem;}
+      .hero-right{display:none;}
+      .features-grid{grid-template-columns:1fr;}
+      .compare-grid{grid-template-columns:1fr;}
+      .price-grid{grid-template-columns:1fr;max-width:400px;margin:3rem auto 0;}
+      .report-inner{grid-template-columns:1fr;}
+      .industry-grid{grid-template-columns:repeat(2,1fr);}
+      .footer-top{grid-template-columns:1fr;}
+      .footer-bottom{flex-direction:column;text-align:center;}
+      .section-title{font-size:1.7rem;}
+      .cta-title{font-size:1.9rem;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo"><img src="./logo.jpg" alt="Bookit"></a>
+    <div class="nav-links">
+      <a href="#features">기능</a>
+      <a href="#compare">비교</a>
+      <a href="#pricing">요금</a>
+      <a href="#industries">업종</a>
+      <a href="#contact">문의</a>
+    </div>
+    <a href="#contact" class="nav-cta">무료 시작하기</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-label">🤖 AI 스마트 상담 솔루션</div>
+      <h1 class="hero-title">AI가 상담하고,<br><span>예약까지 완성</span></h1>
+      <p class="hero-desc">카카오채널·네이버톡톡을 AI로 자동화하세요.<br>24시간 사람처럼 대화하고, 예약까지 한 번에 처리합니다.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">🚀 무료로 시작하기</a>
+        <a href="#features" class="btn-secondary">기능 살펴보기 →</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">24<span>시간</span></div>
+          <div class="stat-label">무중단 운영</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">100<span>+</span></div>
+          <div class="stat-label">지원 언어</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">10<span>배</span></div>
+          <div class="stat-label">비용 절감</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-mockup">
+        <div class="mockup-header">
+          <div class="mockup-avatar">🤖</div>
+          <div>
+            <div class="mockup-name">Bookit AI 상담원</div>
+            <div class="mockup-status">● 온라인</div>
+          </div>
+        </div>
+        <div class="chat-bubble user">
+          <div class="bubble">안녕하세요! 내일 오후 2시 예약 가능한가요?</div>
+          <div class="bubble-dot">👤</div>
+        </div>
+        <div class="chat-bubble ai">
+          <div class="bubble-dot">🤖</div>
+          <div class="bubble">안녕하세요! 😊 내일 오후 2시 확인해드릴게요. 성함이 어떻게 되세요?</div>
+        </div>
+        <div class="chat-bubble user">
+          <div class="bubble">김민준이요</div>
+          <div class="bubble-dot">👤</div>
+        </div>
+        <div class="chat-bubble ai">
+          <div class="bubble-dot">🤖</div>
+          <div class="typing"><span></span><span></span><span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUSTED -->
+<div class="trusted-section">
+  <div class="trusted-label">다양한 업종에서 사용 중입니다</div>
+  <div class="trusted-logos">
+    <div class="trusted-logo">🏥 병원·의원</div>
+    <div class="trusted-logo">✂️ 헤어샵</div>
+    <div class="trusted-logo">💅 네일샵</div>
+    <div class="trusted-logo">🍽️ 식당</div>
+    <div class="trusted-logo">🏨 숙박</div>
+    <div class="trusted-logo">⛳ 골프장</div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="section-wrap" id="features">
+  <div class="inner">
+    <div class="reveal" style="text-align:center;">
+      <span class="section-label">Features</span>
+      <h2 class="section-title">기존 챗봇과 차원이 다릅니다</h2>
+      <p class="section-desc">정해진 시나리오만 답하는 챗봇을 넘어 — AI가 고객의 말을 이해하고 자연스럽게 대화합니다.</p>
+      <div class="divider" style="margin:1rem auto;"></div>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card reveal">
+        <div class="feat-icon">🧠</div>
+        <div class="feat-title">AI 자연 상담</div>
+        <p class="feat-desc">고객의 말을 이해하고 사람처럼 자연스럽게 대화합니다. 상담부터 예약까지 한 번에 처리합니다.</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon">🌙</div>
+        <div class="feat-title">24시간 무중단 운영</div>
+        <p class="feat-desc">저녁, 새벽, 휴일 상관없이 365일 24시간 상담이 이루어집니다. 놓치는 고객이 없습니다.</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon">🌍</div>
+        <div class="feat-title">전 세계 모든 언어</div>
+        <p class="feat-desc">한국어, 영어, 중국어, 일본어 등 100개 이상 언어로 상담 가능합니다. 외국인 고객 유치에 필수입니다.</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon">💰</div>
+        <div class="feat-title">압도적 비용 절감</div>
+        <p class="feat-desc">상담원 월급 250만원 대비 월 정액 요금으로 10배 이상 절감. 비용은 줄이고 성과는 높입니다.</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon">📊</div>
+        <div class="feat-title">실시간 대화 리포트</div>
+        <p class="feat-desc">모든 상담 내용과 예약 결과를 실시간으로 전송합니다. 언제 어디서든 현황을 파악할 수 있습니다.</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon">🔗</div>
+        <div class="feat-title">카카오·네이버 연동</div>
+        <p class="feat-desc">카카오채널과 네이버톡톡에 바로 연결됩니다. 별도 앱 설치 없이 고객이 익숙한 채널에서 상담합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section class="compare-section" id="compare">
+  <div class="inner">
+    <div class="reveal" style="text-align:center;">
+      <span class="section-label" style="color:#a89fff;border-color:rgba(108,99,255,.4);background:rgba(108,99,255,.2);">Comparison</span>
+      <h2 class="section-title" style="color:#fff;">기존 챗봇 vs Bookit AI</h2>
+      <p class="section-desc" style="color:rgba(255,255,255,.6);">차이를 직접 확인해보세요.</p>
+      <div class="divider" style="margin:1rem auto;"></div>
+    </div>
+    <div class="compare-grid reveal">
+      <div class="compare-card old">
+        <div class="compare-title">❌ 기존 챗봇</div>
+        <div class="compare-item"><span class="compare-icon">😐</span>정해진 시나리오만 답변</div>
+        <div class="compare-item"><span class="compare-icon">😐</span>업무시간에만 운영</div>
+        <div class="compare-item"><span class="compare-icon">😐</span>한국어만 지원</div>
+        <div class="compare-item"><span class="compare-icon">😐</span>예약 연동 불가</div>
+        <div class="compare-item"><span class="compare-icon">😐</span>복잡한 질문에 답 못함</div>
+        <div class="compare-item"><span class="compare-icon">😐</span>리포트 제공 없음</div>
+      </div>
+      <div class="compare-card new">
+        <div class="compare-title">✅ Bookit AI</div>
+        <div class="compare-item"><span class="compare-icon">🧠</span>자유로운 자연어 대화</div>
+        <div class="compare-item"><span class="compare-icon">🌙</span>24시간 365일 무중단</div>
+        <div class="compare-item"><span class="compare-icon">🌍</span>100개 이상 언어 지원</div>
+        <div class="compare-item"><span class="compare-icon">📅</span>예약까지 자동 완성</div>
+        <div class="compare-item"><span class="compare-icon">💬</span>어떤 질문도 자연스럽게</div>
+        <div class="compare-item"><span class="compare-icon">📊</span>실시간 리포트 전송</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REPORT MOCKUP -->
+<section class="report-section" id="report">
+  <div class="report-inner">
+    <div class="reveal">
+      <span class="section-label">Real-time Report</span>
+      <h2 class="section-title">사장님 손안에서<br>모든 상담이 보입니다</h2>
+      <div class="divider"></div>
+      <p class="section-desc">상담 내용, 예약 현황, 고객 정보를 실시간으로 전달합니다. 자리를 비워도 놓치는 것이 없습니다.</p>
+      <ul style="margin-top:1.5rem;list-style:none;display:flex;flex-direction:column;gap:.8rem;">
+        <li style="display:flex;align-items:center;gap:.7rem;font-size:.95rem;color:#444;"><span style="color:var(--accent3);font-weight:700;">✓</span> 신규 예약 즉시 알림</li>
+        <li style="display:flex;align-items:center;gap:.7rem;font-size:.95rem;color:#444;"><span style="color:var(--accent3);font-weight:700;">✓</span> 고객 문의 내용 요약</li>
+        <li style="display:flex;align-items:center;gap:.7rem;font-size:.95rem;color:#444;"><span style="color:var(--accent3);font-weight:700;">✓</span> 일별·주별 상담 통계</li>
+        <li style="display:flex;align-items:center;gap:.7rem;font-size:.95rem;color:#444;"><span style="color:var(--accent3);font-weight:700;">✓</span> 카카오톡으로 실시간 전송</li>
+      </ul>
+    </div>
+    <div class="reveal">
+      <div class="report-mockup">
+        <div class="report-header">
+          <div class="report-header-icon">📋</div>
+          <div class="report-header-text">Bookit 실시간 리포트</div>
+        </div>
+        <div class="report-body">
+          <div class="report-date">2026년 6월 14일 오후 3:24</div>
+          <div class="report-item">
+            <div class="report-item-label">📅 신규 예약</div>
+            <div class="report-item-value">김민준 고객님 — 내일 오후 2시 예약 완료<br><span style="color:var(--accent3);font-size:.82rem;">✓ 예약 확인 메시지 자동 발송됨</span></div>
+          </div>
+          <div class="report-item">
+            <div class="report-item-label">💬 상담 요약</div>
+            <div class="report-item-value">총 3건 상담 · 예약 전환 2건<br>주요 문의: 가격, 예약 가능 시간</div>
+          </div>
+          <div class="report-item">
+            <div class="report-item-label">🌍 언어 감지</div>
+            <div class="report-item-value">한국어 2건 · 영어 1건 자동 처리 완료</div>
+          </div>
+        </div>
+        <div class="report-footer">카카오톡으로 실시간 전송됩니다 💬</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section-wrap" id="pricing">
+  <div class="inner">
+    <div class="reveal" style="text-align:center;">
+      <span class="section-label">Pricing</span>
+      <h2 class="section-title">합리적인 요금제</h2>
+      <p class="section-desc">상담원 한 명 월급보다 저렴하게 — 24시간 AI 상담원을 운영하세요.</p>
+      <div class="divider" style="margin:1rem auto;"></div>
+    </div>
+    <div class="price-grid">
+      <div class="price-card reveal">
+        <div class="price-name">스타터</div>
+        <div class="price-desc">소규모 업종 시작용</div>
+        <div class="price-amount">99,000<span>원</span></div>
+        <div class="price-period">/ 월 (VAT 별도)</div>
+        <div class="price-features">
+          <div class="price-feat-item">AI 자연어 상담</div>
+          <div class="price-feat-item">카카오채널 연동 1개</div>
+          <div class="price-feat-item">월 500건 상담</div>
+          <div class="price-feat-item">기본 리포트</div>
+          <div class="price-feat-item">한국어·영어 지원</div>
+        </div>
+        <a href="#contact" class="btn-price outline">시작하기</a>
+      </div>
+      <div class="price-card popular reveal">
+        <div class="price-popular-badge">🔥 가장 인기</div>
+        <div class="price-name">비즈니스</div>
+        <div class="price-desc">성장하는 업종에 최적</div>
+        <div class="price-amount">199,000<span>원</span></div>
+        <div class="price-period">/ 월 (VAT 별도)</div>
+        <div class="price-features">
+          <div class="price-feat-item">AI 자연어 상담</div>
+          <div class="price-feat-item">카카오·네이버 연동</div>
+          <div class="price-feat-item">월 2,000건 상담</div>
+          <div class="price-feat-item">실시간 리포트</div>
+          <div class="price-feat-item">100개 이상 언어 지원</div>
+          <div class="price-feat-item">예약 자동 완성</div>
+        </div>
+        <a href="#contact" class="btn-price filled">시작하기</a>
+      </div>
+      <div class="price-card reveal">
+        <div class="price-name">엔터프라이즈</div>
+        <div class="price-desc">대형 업종·프랜차이즈</div>
+        <div class="price-amount">문의<span></span></div>
+        <div class="price-period">맞춤 견적 안내</div>
+        <div class="price-features">
+          <div class="price-feat-item">무제한 상담</div>
+          <div class="price-feat-item">멀티 채널 연동</div>
+          <div class="price-feat-item">전담 매니저 배정</div>
+          <div class="price-feat-item">커스텀 리포트</div>
+          <div class="price-feat-item">API 연동 지원</div>
+          <div class="price-feat-item">SLA 보장</div>
+        </div>
+        <a href="#contact" class="btn-price outline">문의하기</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section class="section-wrap" id="industries" style="background:var(--light);">
+  <div class="inner">
+    <div class="reveal" style="text-align:center;">
+      <span class="section-label">Industries</span>
+      <h2 class="section-title">어떤 업종이든 OK</h2>
+      <p class="section-desc">카카오채널·네이버톡톡을 사용하는 모든 업종에 적용 가능합니다.</p>
+      <div class="divider" style="margin:1rem auto;"></div>
+    </div>
+    <div class="industry-grid reveal">
+      <div class="industry-card"><div class="industry-icon">🏥</div><div class="industry-name">병원·의원</div></div>
+      <div class="industry-card"><div class="industry-icon">✂️</div><div class="industry-name">헤어샵·미용실</div></div>
+      <div class="industry-card"><div class="industry-icon">💅</div><div class="industry-name">네일샵</div></div>
+      <div class="industry-card"><div class="industry-icon">🍽️</div><div class="industry-name">식당·카페</div></div>
+      <div class="industry-card"><div class="industry-icon">🏨</div><div class="industry-name">숙박·펜션</div></div>
+      <div class="industry-card"><div class="industry-icon">⛳</div><div class="industry-name">골프장</div></div>
+      <div class="industry-card"><div class="industry-icon">🧖</div><div class="industry-name">스파·마사지</div></div>
+      <div class="industry-card"><div class="industry-icon">📚</div><div class="industry-name">학원·교습소</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="inner">
+    <div class="reveal">
+      <h2 class="cta-title">지금 바로 시작하세요<br><span style="background:linear-gradient(135deg,#6c63ff,#43e97b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">14일 무료 체험</span></h2>
+      <p class="cta-desc">설치 없이 5분 만에 연동 완료 — 지금 신청하시면 전담 매니저가 직접 셋업을 도와드립니다.</p>
+      <div class="cta-btns">
+        <a href="https://pf.kakao.com/_YOUR_CHANNEL/chat" target="_blank" class="btn-cta-main">💬 카카오톡으로 무료 상담</a>
+        <a href="mailto:posthit@naver.com" class="btn-cta-sub">✉️ 이메일 문의</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="./logo.jpg" alt="Bookit">
+        <p style="margin-top:1rem;">AI가 상담하고, 예약까지 완성.<br>카카오채널·네이버톡톡 AI 자동화 솔루션.</p>
+      </div>
+      <div class="footer-col">
+        <h4>서비스</h4>
+        <a href="#features">주요 기능</a>
+        <a href="#pricing">요금제</a>
+        <a href="#industries">지원 업종</a>
+      </div>
+      <div class="footer-col">
+        <h4>문의</h4>
+        <a href="mailto:posthit@naver.com">posthit@naver.com</a>
+        <a href="tel:050714762344">0507-1476-2344</a>
+        <a href="#contact">카카오톡 상담</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Bookit (팬토리). All rights reserved. 사업자등록번호: 897-22-02307</div>
+      <div class="footer-links">
+        <a href="#">이용약관</a>
+        <a href="#">개인정보처리방침</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const revealObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){ entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(function(el){ revealObserver.observe(el); });
+</script>
+</body>
+</html>
