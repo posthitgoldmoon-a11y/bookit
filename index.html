@@ -216,7 +216,7 @@
     /* RESPONSIVE */
     @media(max-width:900px){
       .hero-inner{grid-template-columns:1fr;}
-      .hero-title{font-size:2.2rem;}
+      .hero-title{font-size:1.8rem;word-break:keep-all;}
       .hero-right{display:none;}
       .features-grid{grid-template-columns:1fr;}
       .compare-grid{grid-template-columns:1fr;}
@@ -225,9 +225,17 @@
       .report-inner{grid-template-columns:1fr;}
       .industry-grid{grid-template-columns:repeat(2,1fr);}
       .foreign-grid{grid-template-columns:1fr;}
+      .vertical-grid{grid-template-columns:1fr !important;}
+      .hero-mockup{max-width:100%;}
+      .hero-desc{font-size:.95rem;word-break:keep-all;}
+      .hero-stats{gap:1.2rem;}
+      .stat-num{font-size:1.3rem;}
+      .section-desc{word-break:keep-all;}
+      .hero-btns{flex-direction:column;}
+      .btn-primary,.btn-secondary{text-align:center;}
       .footer-top{grid-template-columns:1fr;}
-      .section-title{font-size:1.7rem;}
-      .cta-title{font-size:1.9rem;}
+      .section-title{font-size:1.5rem;word-break:keep-all;}
+      .cta-title{font-size:1.6rem;word-break:keep-all;}
     }
   </style>
 </head>
@@ -796,6 +804,7 @@
 </script>
 </body>
 </html>
+
 
 
 
