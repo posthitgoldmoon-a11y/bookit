@@ -209,6 +209,8 @@
     .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
     .footer-copy{font-size:.82rem;color:rgba(255,255,255,.25);}
 
+    .vertical-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;}
+
     /* REVEAL */
     .reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease;}
     .reveal.visible{opacity:1;transform:none;}
@@ -760,7 +762,9 @@
 </footer>
 
 <script>
-  /* REVEAL */
+  .vertical-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;}
+
+    /* REVEAL */
   const revealObserver = new IntersectionObserver(function(entries){
     entries.forEach(function(entry){
       if(entry.isIntersecting){ entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); }
@@ -804,6 +808,7 @@
 </script>
 </body>
 </html>
+
 
 
 
