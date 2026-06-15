@@ -25,16 +25,15 @@
     a{text-decoration:none;color:inherit;}
 
     /* NAV */
-    .nav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:999;background:#fff;border-bottom:1px solid var(--border);padding:0 2rem;}
     .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
-    .nav-logo img{height:36px;object-fit:contain;}
+    .nav-logo{background:#fff;padding:.3rem .6rem;border-radius:8px;}
+    .nav-logo img{height:36px;object-fit:contain;display:block;}
     .nav-links{display:flex;gap:2rem;font-size:.92rem;font-weight:500;}
     .nav-links a{color:#444;transition:color .2s;}
     .nav-links a:hover{color:var(--accent);}
     .nav-cta{background:var(--accent);color:#fff;padding:.55rem 1.4rem;border-radius:50px;font-size:.9rem;font-weight:700;transition:all .2s;}
     .nav-cta:hover{background:#5a52e0;transform:translateY(-1px);}
-    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
-    .hamburger span{display:block;width:24px;height:2px;background:#333;border-radius:2px;}
 
     /* HERO */
     .hero{min-height:100vh;background:linear-gradient(135deg,#1a1150 0%,#2d1b6e 40%,#1a3a6e 100%);display:flex;align-items:center;padding:8rem 2rem 5rem;position:relative;overflow:hidden;}
@@ -47,34 +46,35 @@
     .hero-desc{font-size:1.1rem;color:rgba(255,255,255,.75);line-height:1.9;margin-bottom:2.5rem;}
     .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
     .btn-primary{background:var(--accent);color:#fff;padding:.9rem 2rem;border-radius:50px;font-weight:700;font-size:1rem;transition:all .25s;box-shadow:0 4px 20px rgba(108,99,255,.4);}
-    .btn-primary:hover{background:#5a52e0;transform:translateY(-2px);box-shadow:0 8px 30px rgba(108,99,255,.5);}
+    .btn-primary:hover{background:#5a52e0;transform:translateY(-2px);}
     .btn-secondary{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.3);padding:.9rem 2rem;border-radius:50px;font-weight:600;font-size:1rem;transition:all .25s;}
     .btn-secondary:hover{background:rgba(255,255,255,.2);}
-    .hero-right{display:flex;justify-content:center;align-items:center;}
-    .hero-mockup{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:24px;padding:1.5rem;width:100%;max-width:380px;backdrop-filter:blur(10px);}
-    .mockup-header{display:flex;align-items:center;gap:.8rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:1rem;}
-    .mockup-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#6c63ff,#43e97b);display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
-    .mockup-name{color:#fff;font-weight:700;font-size:.95rem;}
-    .mockup-status{color:#43e97b;font-size:.78rem;}
-    .chat-bubble{margin-bottom:.8rem;}
-    .chat-bubble.ai{display:flex;gap:.6rem;align-items:flex-end;}
-    .chat-bubble.user{display:flex;flex-direction:row-reverse;gap:.6rem;align-items:flex-end;}
-    .bubble{padding:.7rem 1rem;border-radius:16px;font-size:.85rem;line-height:1.6;max-width:80%;}
-    .ai .bubble{background:rgba(108,99,255,.3);color:#fff;border-bottom-left-radius:4px;}
-    .user .bubble{background:rgba(255,255,255,.15);color:#fff;border-bottom-right-radius:4px;}
-    .bubble-dot{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#6c63ff,#43e97b);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.8rem;}
-    .typing{display:flex;gap:4px;align-items:center;padding:.7rem 1rem;background:rgba(108,99,255,.3);border-radius:16px;border-bottom-left-radius:4px;width:fit-content;}
-    .typing span{width:6px;height:6px;background:rgba(255,255,255,.6);border-radius:50%;animation:typing .8s infinite;}
-    .typing span:nth-child(2){animation-delay:.15s;}
-    .typing span:nth-child(3){animation-delay:.3s;}
-    @keyframes typing{0%,60%,100%{transform:translateY(0);}30%{transform:translateY(-6px);}}
     .hero-stats{display:flex;gap:2rem;margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.1);}
-    .stat-item{text-align:center;}
     .stat-num{font-size:1.6rem;font-weight:900;color:#fff;}
     .stat-num span{font-size:.9rem;font-weight:400;color:rgba(255,255,255,.6);}
     .stat-label{font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.2rem;}
 
-    /* SECTION COMMON */
+    /* CHAT MOCKUP */
+    .hero-mockup{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:24px;padding:1.5rem;width:100%;max-width:380px;backdrop-filter:blur(10px);}
+    .mockup-header{display:flex;align-items:center;gap:.8rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:1rem;}
+    .mockup-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#6c63ff,#43e97b);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+    .mockup-name{color:#fff;font-weight:700;font-size:.95rem;}
+    .mockup-status{color:#43e97b;font-size:.78rem;}
+    .chat-messages{display:flex;flex-direction:column;gap:.8rem;min-height:280px;}
+    .chat-msg{display:flex;gap:.6rem;align-items:flex-end;opacity:0;transform:translateY(10px);transition:opacity .4s ease,transform .4s ease;}
+    .chat-msg.show{opacity:1;transform:none;}
+    .chat-msg.user{flex-direction:row-reverse;}
+    .bubble{padding:.7rem 1rem;border-radius:16px;font-size:.83rem;line-height:1.6;max-width:82%;}
+    .chat-msg.ai .bubble{background:rgba(108,99,255,.35);color:#fff;border-bottom-left-radius:4px;}
+    .chat-msg.user .bubble{background:rgba(255,255,255,.18);color:#fff;border-bottom-right-radius:4px;}
+    .bubble-dot{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#6c63ff,#43e97b);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.8rem;}
+    .typing-indicator{display:flex;gap:4px;align-items:center;padding:.7rem 1rem;background:rgba(108,99,255,.35);border-radius:16px;border-bottom-left-radius:4px;width:fit-content;}
+    .typing-indicator span{width:6px;height:6px;background:rgba(255,255,255,.7);border-radius:50%;animation:bounce .8s infinite;}
+    .typing-indicator span:nth-child(2){animation-delay:.15s;}
+    .typing-indicator span:nth-child(3){animation-delay:.3s;}
+    @keyframes bounce{0%,60%,100%{transform:translateY(0);}30%{transform:translateY(-6px);}}
+
+    /* COMMON */
     .section-wrap{padding:6rem 2rem;}
     .inner{max-width:1200px;margin:0 auto;}
     .section-label{display:inline-block;background:linear-gradient(135deg,rgba(108,99,255,.1),rgba(67,233,123,.1));color:var(--accent);border:1px solid rgba(108,99,255,.2);padding:.3rem .9rem;border-radius:50px;font-size:.8rem;font-weight:700;letter-spacing:1px;margin-bottom:1rem;}
@@ -82,11 +82,11 @@
     .section-desc{font-size:1.05rem;color:var(--gray);line-height:1.9;}
     .divider{width:48px;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent3));border-radius:3px;margin-bottom:2rem;}
 
-    /* LOGOS / TRUSTED */
-    .trusted-section{padding:3rem 2rem;background:var(--light);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-    .trusted-label{text-align:center;font-size:.85rem;color:var(--gray);margin-bottom:1.5rem;font-weight:500;}
-    .trusted-logos{display:flex;justify-content:center;align-items:center;gap:3rem;flex-wrap:wrap;}
-    .trusted-logo{font-size:1.1rem;font-weight:800;color:#bbb;letter-spacing:1px;}
+    /* TRUSTED */
+    .trusted-section{padding:2.5rem 2rem;background:var(--light);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+    .trusted-label{text-align:center;font-size:.85rem;color:var(--gray);margin-bottom:1.2rem;font-weight:500;}
+    .trusted-logos{display:flex;justify-content:center;align-items:center;gap:2.5rem;flex-wrap:wrap;}
+    .trusted-logo{font-size:1rem;font-weight:700;color:#bbb;}
 
     /* FEATURES */
     .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;}
@@ -105,12 +105,50 @@
     .compare-card.old{background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.1);}
     .compare-card.new{background:linear-gradient(135deg,rgba(108,99,255,.3),rgba(67,233,123,.15));border:1.5px solid rgba(108,99,255,.4);}
     .compare-title{font-size:1.1rem;font-weight:800;margin-bottom:1.5rem;}
-    .compare-card.old .compare-title{color:rgba(255,255,255,.5);}
+    .compare-card.old .compare-title{color:rgba(255,255,255,.4);}
     .compare-card.new .compare-title{color:#a89fff;}
     .compare-item{display:flex;align-items:center;gap:.8rem;margin-bottom:.9rem;font-size:.92rem;}
-    .compare-card.old .compare-item{color:rgba(255,255,255,.5);}
+    .compare-card.old .compare-item{color:rgba(255,255,255,.45);}
     .compare-card.new .compare-item{color:rgba(255,255,255,.9);}
-    .compare-icon{font-size:1.1rem;flex-shrink:0;}
+
+    /* DOCTOR OBJECTION */
+    .objection-section{background:var(--light);padding:6rem 2rem;}
+    .objection-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;margin-top:3rem;}
+    .obj-card{background:#fff;border-radius:20px;padding:2rem;border:1.5px solid var(--border);transition:all .25s;}
+    .obj-card:hover{border-color:var(--accent);box-shadow:var(--shadow-lg);transform:translateY(-3px);}
+    .obj-q{background:linear-gradient(135deg,rgba(255,101,132,.1),rgba(255,101,132,.05));border-left:4px solid var(--accent2);border-radius:0 12px 12px 0;padding:1rem 1.2rem;margin-bottom:1rem;font-size:.9rem;color:#c0392b;font-weight:600;line-height:1.7;}
+    .obj-q::before{content:'❌ 원장님: ';font-weight:800;}
+    .obj-a{font-size:.9rem;color:#444;line-height:1.8;}
+    .obj-a::before{content:'✅ Bookit: ';font-weight:800;color:var(--accent);}
+
+    /* SCENARIO */
+    .scenario-section{padding:6rem 2rem;background:#fff;}
+    .scenario-box{background:linear-gradient(135deg,#1a1150,#2d1b6e);border-radius:24px;padding:3rem;margin-top:3rem;}
+    .scenario-title{color:#a89fff;font-size:.85rem;font-weight:700;letter-spacing:1px;margin-bottom:.5rem;}
+    .scenario-chat{display:flex;flex-direction:column;gap:1rem;}
+    .sc-msg{display:flex;gap:.8rem;align-items:flex-start;}
+    .sc-msg.user-msg{flex-direction:row-reverse;}
+    .sc-avatar{width:36px;height:36px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1rem;}
+    .sc-ai-avatar{background:linear-gradient(135deg,#6c63ff,#43e97b);}
+    .sc-user-avatar{background:rgba(255,255,255,.2);}
+    .sc-bubble{padding:.9rem 1.2rem;border-radius:16px;font-size:.88rem;line-height:1.7;max-width:85%;}
+    .sc-msg.ai-msg .sc-bubble{background:rgba(108,99,255,.3);color:#fff;border-top-left-radius:4px;}
+    .sc-msg.user-msg .sc-bubble{background:rgba(255,255,255,.15);color:#fff;border-top-right-radius:4px;}
+    .sc-highlight{background:rgba(67,233,123,.15);border:1px solid rgba(67,233,123,.3);border-radius:12px;padding:.8rem 1rem;margin-top:.5rem;font-size:.82rem;color:#43e97b;}
+
+    /* REPORT */
+    .report-section{background:var(--light);padding:6rem 2rem;}
+    .report-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+    .report-mockup{background:#fff;border-radius:24px;box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid var(--border);}
+    .report-header{background:linear-gradient(135deg,#1a1150,#2d1b6e);padding:1.2rem 1.5rem;display:flex;align-items:center;gap:.8rem;}
+    .report-header-icon{width:36px;height:36px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;}
+    .report-header-text{color:#fff;font-weight:700;font-size:.95rem;}
+    .report-body{padding:1.5rem;}
+    .report-date{font-size:.8rem;color:var(--gray);margin-bottom:1rem;text-align:center;}
+    .report-item{background:var(--light);border-radius:12px;padding:1rem 1.2rem;margin-bottom:.8rem;}
+    .report-item-label{font-size:.75rem;color:var(--accent);font-weight:700;margin-bottom:.3rem;}
+    .report-item-value{font-size:.88rem;color:#333;line-height:1.6;}
+    .report-footer{padding:1rem 1.5rem;border-top:1px solid var(--border);text-align:center;font-size:.8rem;color:var(--gray);}
 
     /* PRICING */
     .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;}
@@ -131,26 +169,21 @@
     .btn-price.filled{background:var(--accent);color:#fff;box-shadow:0 4px 20px rgba(108,99,255,.3);}
     .btn-price.filled:hover{background:#5a52e0;transform:translateY(-2px);}
 
-    /* REPORT MOCKUP */
-    .report-section{background:var(--light);padding:6rem 2rem;}
-    .report-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
-    .report-mockup{background:#fff;border-radius:24px;box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid var(--border);}
-    .report-header{background:linear-gradient(135deg,#1a1150,#2d1b6e);padding:1.2rem 1.5rem;display:flex;align-items:center;gap:.8rem;}
-    .report-header-icon{width:36px;height:36px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:1rem;}
-    .report-header-text{color:#fff;font-weight:700;font-size:.95rem;}
-    .report-body{padding:1.5rem;}
-    .report-date{font-size:.8rem;color:var(--gray);margin-bottom:1rem;text-align:center;}
-    .report-item{background:var(--light);border-radius:12px;padding:1rem 1.2rem;margin-bottom:.8rem;}
-    .report-item-label{font-size:.75rem;color:var(--accent);font-weight:700;margin-bottom:.3rem;}
-    .report-item-value{font-size:.88rem;color:#333;line-height:1.6;}
-    .report-footer{padding:1rem 1.5rem;border-top:1px solid var(--border);text-align:center;font-size:.8rem;color:var(--gray);}
-
     /* INDUSTRIES */
     .industry-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem;}
-    .industry-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:1.8rem 1rem;text-align:center;transition:all .25s;cursor:pointer;}
+    .industry-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:1.8rem 1rem;text-align:center;transition:all .25s;}
     .industry-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:var(--shadow);}
     .industry-icon{font-size:2.5rem;margin-bottom:.8rem;}
     .industry-name{font-size:.95rem;font-weight:700;color:var(--primary);}
+
+    /* FOREIGN */
+    .foreign-section{background:linear-gradient(135deg,#1a1150,#2d1b6e);padding:6rem 2rem;}
+    .foreign-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;}
+    .foreign-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:2rem;transition:all .25s;}
+    .foreign-card:hover{background:rgba(255,255,255,.12);transform:translateY(-3px);}
+    .foreign-num{font-size:2rem;font-weight:900;color:#f0d080;margin-bottom:.5rem;}
+    .foreign-title{font-size:1rem;font-weight:700;color:#fff;margin-bottom:.6rem;}
+    .foreign-desc{font-size:.88rem;color:rgba(255,255,255,.65);line-height:1.7;}
 
     /* CTA */
     .cta-section{background:linear-gradient(135deg,#1a1150,#2d1b6e,#1a3a6e);padding:6rem 2rem;text-align:center;position:relative;overflow:hidden;}
@@ -159,7 +192,7 @@
     .cta-desc{font-size:1.05rem;color:rgba(255,255,255,.7);margin-bottom:2.5rem;position:relative;}
     .cta-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;position:relative;}
     .btn-cta-main{background:linear-gradient(135deg,var(--accent),var(--accent3));color:#fff;padding:1rem 2.5rem;border-radius:50px;font-weight:800;font-size:1.05rem;transition:all .25s;box-shadow:0 8px 30px rgba(108,99,255,.4);}
-    .btn-cta-main:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(108,99,255,.5);}
+    .btn-cta-main:hover{transform:translateY(-3px);}
     .btn-cta-sub{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.3);padding:1rem 2.5rem;border-radius:50px;font-weight:600;font-size:1.05rem;transition:all .25s;}
     .btn-cta-sub:hover{background:rgba(255,255,255,.2);}
 
@@ -167,16 +200,14 @@
     .footer{background:#0d0a1e;padding:4rem 2rem 2rem;}
     .footer-inner{max-width:1200px;margin:0 auto;}
     .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
-    .footer-brand img{height:32px;margin-bottom:1rem;}
+    .footer-logo-wrap{background:#fff;display:inline-block;padding:.4rem .8rem;border-radius:8px;margin-bottom:1rem;}
+    .footer-logo-wrap img{height:30px;display:block;}
     .footer-brand p{font-size:.88rem;color:rgba(255,255,255,.45);line-height:1.8;}
     .footer-col h4{font-size:.95rem;font-weight:700;color:rgba(255,255,255,.7);margin-bottom:1rem;}
     .footer-col a{display:block;font-size:.88rem;color:rgba(255,255,255,.4);margin-bottom:.6rem;transition:color .2s;}
     .footer-col a:hover{color:var(--accent);}
     .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
     .footer-copy{font-size:.82rem;color:rgba(255,255,255,.25);}
-    .footer-links{display:flex;gap:1.5rem;}
-    .footer-links a{font-size:.82rem;color:rgba(255,255,255,.3);transition:color .2s;}
-    .footer-links a:hover{color:var(--accent);}
 
     /* REVEAL */
     .reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease;}
@@ -184,18 +215,17 @@
 
     /* RESPONSIVE */
     @media(max-width:900px){
-      .nav-links{display:none;}
-      .hamburger{display:flex;}
-      .hero-inner{grid-template-columns:1fr;gap:3rem;}
+      .hero-inner{grid-template-columns:1fr;}
       .hero-title{font-size:2.2rem;}
       .hero-right{display:none;}
       .features-grid{grid-template-columns:1fr;}
       .compare-grid{grid-template-columns:1fr;}
+      .objection-grid{grid-template-columns:1fr;}
       .price-grid{grid-template-columns:1fr;max-width:400px;margin:3rem auto 0;}
       .report-inner{grid-template-columns:1fr;}
       .industry-grid{grid-template-columns:repeat(2,1fr);}
+      .foreign-grid{grid-template-columns:1fr;}
       .footer-top{grid-template-columns:1fr;}
-      .footer-bottom{flex-direction:column;text-align:center;}
       .section-title{font-size:1.7rem;}
       .cta-title{font-size:1.9rem;}
     }
@@ -214,8 +244,7 @@
       <a href="#industries">업종</a>
       <a href="#contact">문의</a>
     </div>
-    <a href="#contact" class="nav-cta">무료 시작하기</a>
-    <div class="hamburger"><span></span><span></span><span></span></div>
+    <a href="#contact" class="nav-cta">무료 상담하기</a>
   </div>
 </nav>
 
@@ -223,23 +252,23 @@
 <section class="hero" id="home">
   <div class="hero-inner">
     <div>
-      <div class="hero-label">🤖 AI 스마트 상담 솔루션</div>
+      <div class="hero-label">🤖 AI 스마트 상담 자동화</div>
       <h1 class="hero-title">AI가 상담하고,<br><span>예약까지 완성</span></h1>
-      <p class="hero-desc">카카오채널·네이버톡톡을 AI로 자동화하세요.<br>24시간 사람처럼 대화하고, 예약까지 한 번에 처리합니다.</p>
+      <p class="hero-desc">카카오채널을 AI로 자동화하세요.<br>24시간 사람처럼 자연스럽게 대화하고,<br>예약까지 한 번에 처리합니다.</p>
       <div class="hero-btns">
-        <a href="#contact" class="btn-primary">🚀 무료로 시작하기</a>
+        <a href="#contact" class="btn-primary">🚀 무료 상담 신청</a>
         <a href="#features" class="btn-secondary">기능 살펴보기 →</a>
       </div>
       <div class="hero-stats">
-        <div class="stat-item">
+        <div>
           <div class="stat-num">24<span>시간</span></div>
           <div class="stat-label">무중단 운영</div>
         </div>
-        <div class="stat-item">
+        <div>
           <div class="stat-num">100<span>+</span></div>
           <div class="stat-label">지원 언어</div>
         </div>
-        <div class="stat-item">
+        <div>
           <div class="stat-num">10<span>배</span></div>
           <div class="stat-label">비용 절감</div>
         </div>
@@ -251,24 +280,24 @@
           <div class="mockup-avatar">🤖</div>
           <div>
             <div class="mockup-name">Bookit AI 상담원</div>
-            <div class="mockup-status">● 온라인</div>
+            <div class="mockup-status">● 지금 온라인</div>
           </div>
         </div>
-        <div class="chat-bubble user">
-          <div class="bubble">안녕하세요! 내일 오후 2시 예약 가능한가요?</div>
-          <div class="bubble-dot">👤</div>
-        </div>
-        <div class="chat-bubble ai">
-          <div class="bubble-dot">🤖</div>
-          <div class="bubble">안녕하세요! 😊 내일 오후 2시 확인해드릴게요. 성함이 어떻게 되세요?</div>
-        </div>
-        <div class="chat-bubble user">
-          <div class="bubble">김민준이요</div>
-          <div class="bubble-dot">👤</div>
-        </div>
-        <div class="chat-bubble ai">
-          <div class="bubble-dot">🤖</div>
-          <div class="typing"><span></span><span></span><span></span></div>
+        <div class="chat-messages" id="chatMessages">
+          <div class="chat-msg ai" id="msg1">
+            <div class="bubble-dot">🤖</div>
+            <div class="bubble">안녕하세요! 😊 뻔한 챗봇 버튼 말고, 그냥 친구한테 카톡하듯 편하게 말씀해 주세요!</div>
+          </div>
+          <div class="chat-msg user" id="msg2">
+            <div class="bubble">다음 주 금요일 퇴근 후에 여드름 흉터 치료 예약 될까요?</div>
+            <div class="bubble-dot">👤</div>
+          </div>
+          <div class="chat-msg ai" id="msg3">
+            <div class="bubble-dot">🤖</div>
+            <div class="bubble" id="typingBubble">
+              <div class="typing-indicator"><span></span><span></span><span></span></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -277,7 +306,7 @@
 
 <!-- TRUSTED -->
 <div class="trusted-section">
-  <div class="trusted-label">다양한 업종에서 사용 중입니다</div>
+  <div class="trusted-label">카카오채널을 사용하는 모든 업종에 적용 가능합니다</div>
   <div class="trusted-logos">
     <div class="trusted-logo">🏥 병원·의원</div>
     <div class="trusted-logo">✂️ 헤어샵</div>
@@ -301,32 +330,32 @@
       <div class="feat-card reveal">
         <div class="feat-icon">🧠</div>
         <div class="feat-title">AI 자연 상담</div>
-        <p class="feat-desc">고객의 말을 이해하고 사람처럼 자연스럽게 대화합니다. 상담부터 예약까지 한 번에 처리합니다.</p>
+        <p class="feat-desc">고객의 말을 이해하고 사람처럼 자연스럽게 대화합니다. 어떤 질문도 막힘 없이, 상담부터 예약까지 한 번에 처리합니다.</p>
       </div>
       <div class="feat-card reveal">
         <div class="feat-icon">🌙</div>
         <div class="feat-title">24시간 무중단 운영</div>
-        <p class="feat-desc">저녁, 새벽, 휴일 상관없이 365일 24시간 상담이 이루어집니다. 놓치는 고객이 없습니다.</p>
+        <p class="feat-desc">새벽 2시에 들어온 예약 문의도 즉시 답변합니다. 직원이 퇴근한 골든타임을 절대 놓치지 않습니다.</p>
       </div>
       <div class="feat-card reveal">
         <div class="feat-icon">🌍</div>
-        <div class="feat-title">전 세계 모든 언어</div>
-        <p class="feat-desc">한국어, 영어, 중국어, 일본어 등 100개 이상 언어로 상담 가능합니다. 외국인 고객 유치에 필수입니다.</p>
+        <div class="feat-title">전 세계 언어 자동 지원</div>
+        <p class="feat-desc">영어, 중국어, 일본어 등 100개 이상 언어를 자동 감지해 답변합니다. 외국인 고객도 막힘 없이 예약 완료.</p>
       </div>
       <div class="feat-card reveal">
         <div class="feat-icon">💰</div>
-        <div class="feat-title">압도적 비용 절감</div>
-        <p class="feat-desc">상담원 월급 250만원 대비 월 정액 요금으로 10배 이상 절감. 비용은 줄이고 성과는 높입니다.</p>
+        <div class="feat-title">상담원 대비 10배 절감</div>
+        <p class="feat-desc">상담원 월급 250만원 vs Bookit 월 정액 요금. 비용은 줄이고 응대 품질과 속도는 오히려 높아집니다.</p>
       </div>
       <div class="feat-card reveal">
         <div class="feat-icon">📊</div>
         <div class="feat-title">실시간 대화 리포트</div>
-        <p class="feat-desc">모든 상담 내용과 예약 결과를 실시간으로 전송합니다. 언제 어디서든 현황을 파악할 수 있습니다.</p>
+        <p class="feat-desc">모든 상담 내용과 예약 결과를 카카오톡으로 실시간 전송합니다. 사장님은 자리를 비워도 현황을 파악할 수 있습니다.</p>
       </div>
       <div class="feat-card reveal">
-        <div class="feat-icon">🔗</div>
-        <div class="feat-title">카카오·네이버 연동</div>
-        <p class="feat-desc">카카오채널과 네이버톡톡에 바로 연결됩니다. 별도 앱 설치 없이 고객이 익숙한 채널에서 상담합니다.</p>
+        <div class="feat-icon">🎯</div>
+        <div class="feat-title">원장님 매칭 & 업셀링</div>
+        <p class="feat-desc">고객 상황에 맞는 원장님을 AI가 추천하고 자연스럽게 업셀링합니다. 노쇼 방지 예약금 결제까지 자동으로 처리합니다.</p>
       </div>
     </div>
   </div>
@@ -338,45 +367,126 @@
     <div class="reveal" style="text-align:center;">
       <span class="section-label" style="color:#a89fff;border-color:rgba(108,99,255,.4);background:rgba(108,99,255,.2);">Comparison</span>
       <h2 class="section-title" style="color:#fff;">기존 챗봇 vs Bookit AI</h2>
-      <p class="section-desc" style="color:rgba(255,255,255,.6);">차이를 직접 확인해보세요.</p>
+      <p class="section-desc" style="color:rgba(255,255,255,.6);">버튼 누르다 포기하는 챗봇 vs 진짜 대화가 되는 AI</p>
       <div class="divider" style="margin:1rem auto;"></div>
     </div>
     <div class="compare-grid reveal">
       <div class="compare-card old">
         <div class="compare-title">❌ 기존 챗봇</div>
-        <div class="compare-item"><span class="compare-icon">😐</span>정해진 시나리오만 답변</div>
-        <div class="compare-item"><span class="compare-icon">😐</span>업무시간에만 운영</div>
-        <div class="compare-item"><span class="compare-icon">😐</span>한국어만 지원</div>
-        <div class="compare-item"><span class="compare-icon">😐</span>예약 연동 불가</div>
-        <div class="compare-item"><span class="compare-icon">😐</span>복잡한 질문에 답 못함</div>
-        <div class="compare-item"><span class="compare-icon">😐</span>리포트 제공 없음</div>
+        <div class="compare-item">😐 정해진 시나리오만 답변</div>
+        <div class="compare-item">😐 업무시간에만 운영</div>
+        <div class="compare-item">😐 한국어만 지원</div>
+        <div class="compare-item">😐 예약 연동 불가</div>
+        <div class="compare-item">😐 복잡한 질문에 오류</div>
+        <div class="compare-item">😐 리포트 제공 없음</div>
+        <div class="compare-item">😐 업셀링·노쇼 방지 불가</div>
       </div>
       <div class="compare-card new">
         <div class="compare-title">✅ Bookit AI</div>
-        <div class="compare-item"><span class="compare-icon">🧠</span>자유로운 자연어 대화</div>
-        <div class="compare-item"><span class="compare-icon">🌙</span>24시간 365일 무중단</div>
-        <div class="compare-item"><span class="compare-icon">🌍</span>100개 이상 언어 지원</div>
-        <div class="compare-item"><span class="compare-icon">📅</span>예약까지 자동 완성</div>
-        <div class="compare-item"><span class="compare-icon">💬</span>어떤 질문도 자연스럽게</div>
-        <div class="compare-item"><span class="compare-icon">📊</span>실시간 리포트 전송</div>
+        <div class="compare-item">🧠 자유로운 자연어 대화</div>
+        <div class="compare-item">🌙 24시간 365일 무중단</div>
+        <div class="compare-item">🌍 100개 이상 언어 자동 감지</div>
+        <div class="compare-item">📅 예약까지 자동 완성</div>
+        <div class="compare-item">💬 어떤 질문도 자연스럽게</div>
+        <div class="compare-item">📊 실시간 리포트 전송</div>
+        <div class="compare-item">🎯 AI 업셀링 & 노쇼 방지</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- REPORT MOCKUP -->
+<!-- DOCTOR OBJECTION -->
+<section class="objection-section" id="objection">
+  <div class="inner">
+    <div class="reveal" style="text-align:center;">
+      <span class="section-label">신뢰 & 안전</span>
+      <h2 class="section-title">원장님들이 가장 많이<br>물어보시는 질문</h2>
+      <p class="section-desc">도입 전 가장 날카로운 반박에 명확하게 답변드립니다.</p>
+      <div class="divider" style="margin:1rem auto;"></div>
+    </div>
+    <div class="objection-grid">
+      <div class="obj-card reveal">
+        <div class="obj-q">"AI가 부작용을 잘못 설명하면 의료 소송 책임질 겁니까?"</div>
+        <p class="obj-a">Bookit은 진단하지 않습니다. 원장님이 설정한 안내 범위 내에서만 답변하고, 의학적 확답이 필요한 질문은 "정확한 진단은 내원 후 원장님 진료를 통해 결정됩니다"라고 자동 안내합니다. 법적 리스크 제로.</p>
+      </div>
+      <div class="obj-card reveal">
+        <div class="obj-q">"환자 알선·유인 행위로 의료법 위반 아닌가요?"</div>
+        <p class="obj-a">Bookit은 플랫폼이 아닙니다. 원장님 병원 카카오채널에 직접 문의한 환자를 응대하는 행정 자동화 툴입니다. KT 유선전화나 카카오 챗봇과 법적으로 동일한 구독형 SaaS — 의료법 위반 해당 없음.</p>
+      </div>
+      <div class="obj-card reveal">
+        <div class="obj-q">"AI가 텍스트로 500만원 패키지를 팔 수 있겠어요?"</div>
+        <p class="obj-a">Bookit은 실장님과 경쟁하지 않습니다. 직원이 퇴근한 새벽에 들어온 외국인 문의를 즉시 응대하고, 노쇼 방지 예약금만 받아서 다음 날 아침 실장님 책상 앞에 앉혀두는 것이 Bookit의 역할입니다.</p>
+      </div>
+      <div class="obj-card reveal">
+        <div class="obj-q">"기존 CRM이랑 연동 안 되면 중복 예약 나지 않나요?"</div>
+        <p class="obj-a">원장님이 지정한 외국인 전용 타임슬롯 안에서만 예약을 유도합니다. AI가 임의 확정하지 않고 직원 화면에 승인 팝업이 뜨면 클릭 한 번으로 확정 — 기존 시스템을 전혀 건드리지 않습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCENARIO -->
+<section class="scenario-section" id="scenario">
+  <div class="inner">
+    <div class="reveal" style="text-align:center;">
+      <span class="section-label">AI 상담 시나리오</span>
+      <h2 class="section-title">이렇게 실제로 대화합니다</h2>
+      <p class="section-desc">단순 버튼 선택이 아닌 — 진짜 상담실장처럼 대화하고 예약까지 완성합니다.</p>
+      <div class="divider" style="margin:1rem auto;"></div>
+    </div>
+    <div class="scenario-box reveal">
+      <div class="scenario-title">💬 실제 Bookit AI 상담 시나리오 — OO피부과</div>
+      <br>
+      <div class="scenario-chat">
+        <div class="sc-msg user-msg">
+          <div class="sc-bubble">다음 주 금요일 퇴근하고 갈 건데 여드름 흉터 치료 예약될까요?</div>
+          <div class="sc-avatar sc-user-avatar">👤</div>
+        </div>
+        <div class="sc-msg ai-msg">
+          <div class="sc-avatar sc-ai-avatar">🤖</div>
+          <div class="sc-bubble">
+            네, 다음 주 금요일(19일) 저녁 6시 이후 예약 가능합니다! 😊<br><br>
+            흉터 치료에 진심인 두 분 원장님이 계시는데요, 고객님 스타일에 맞는 분을 골라드릴게요.<br><br>
+            🔥 <strong>김두인 원장님</strong> (18:30 / 19:30 가능)<br>
+            <span style="color:rgba(255,255,255,.7);font-size:.82rem;">"다른 데서 포기한 분화구 흉터 여기서 새 살 돋았어요" — 빠르고 확실한 효과 원하시는 분</span><br><br>
+            👼 <strong>이마음 원장님</strong> (18:00 / 19:00 가능)<br>
+            <span style="color:rgba(255,255,255,.7);font-size:.82rem;">"마취 크림 장인이세요. 통증 거의 없었어요" — 통증에 예민하신 분</span><br><br>
+            어떤 원장님으로 예약 잡아드릴까요?
+            <div class="sc-highlight">💡 AI가 실제 후기를 분석해 고객 맞춤 원장님을 추천합니다</div>
+          </div>
+        </div>
+        <div class="sc-msg user-msg">
+          <div class="sc-bubble">김두인 원장님으로 19:30 부탁해요</div>
+          <div class="sc-avatar sc-user-avatar">👤</div>
+        </div>
+        <div class="sc-msg ai-msg">
+          <div class="sc-avatar sc-ai-avatar">🤖</div>
+          <div class="sc-bubble">
+            완벽합니다! 🎉 김두인 원장님 19:30 예약 확정해드릴게요.<br><br>
+            노쇼 방지를 위해 예약금 5만원만 결제해 주시면 바로 확정됩니다.<br>
+            <span style="color:#43e97b;font-size:.85rem;">→ 결제 링크 전송됨 ✓</span><br><br>
+            내원 당일 정확한 상담을 위해 현재 흉터 사진을 하나만 보내주시겠어요?
+            <div class="sc-highlight">✅ 예약금 수령 완료 → 원장님 대시보드 알림 자동 발송</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REPORT -->
 <section class="report-section" id="report">
   <div class="report-inner">
     <div class="reveal">
       <span class="section-label">Real-time Report</span>
       <h2 class="section-title">사장님 손안에서<br>모든 상담이 보입니다</h2>
       <div class="divider"></div>
-      <p class="section-desc">상담 내용, 예약 현황, 고객 정보를 실시간으로 전달합니다. 자리를 비워도 놓치는 것이 없습니다.</p>
+      <p class="section-desc">상담 내용, 예약 현황, 고객 정보를 실시간으로 카카오톡으로 전달합니다. 자리를 비워도 놓치는 것이 없습니다.</p>
       <ul style="margin-top:1.5rem;list-style:none;display:flex;flex-direction:column;gap:.8rem;">
-        <li style="display:flex;align-items:center;gap:.7rem;font-size:.95rem;color:#444;"><span style="color:var(--accent3);font-weight:700;">✓</span> 신규 예약 즉시 알림</li>
-        <li style="display:flex;align-items:center;gap:.7rem;font-size:.95rem;color:#444;"><span style="color:var(--accent3);font-weight:700;">✓</span> 고객 문의 내용 요약</li>
-        <li style="display:flex;align-items:center;gap:.7rem;font-size:.95rem;color:#444;"><span style="color:var(--accent3);font-weight:700;">✓</span> 일별·주별 상담 통계</li>
-        <li style="display:flex;align-items:center;gap:.7rem;font-size:.95rem;color:#444;"><span style="color:var(--accent3);font-weight:700;">✓</span> 카카오톡으로 실시간 전송</li>
+        <li style="display:flex;align-items:center;gap:.7rem;font-size:.95rem;color:#444;"><span style="color:var(--accent3);font-weight:700;">✓</span>신규 예약 즉시 알림</li>
+        <li style="display:flex;align-items:center;gap:.7rem;font-size:.95rem;color:#444;"><span style="color:var(--accent3);font-weight:700;">✓</span>고객 문의 내용 자동 요약</li>
+        <li style="display:flex;align-items:center;gap:.7rem;font-size:.95rem;color:#444;"><span style="color:var(--accent3);font-weight:700;">✓</span>일별·주별 상담 통계</li>
+        <li style="display:flex;align-items:center;gap:.7rem;font-size:.95rem;color:#444;"><span style="color:var(--accent3);font-weight:700;">✓</span>카카오톡으로 실시간 전송</li>
       </ul>
     </div>
     <div class="reveal">
@@ -386,21 +496,50 @@
           <div class="report-header-text">Bookit 실시간 리포트</div>
         </div>
         <div class="report-body">
-          <div class="report-date">2026년 6월 14일 오후 3:24</div>
+          <div class="report-date">2026년 6월 14일 오후 11:47</div>
           <div class="report-item">
-            <div class="report-item-label">📅 신규 예약</div>
-            <div class="report-item-value">김민준 고객님 — 내일 오후 2시 예약 완료<br><span style="color:var(--accent3);font-size:.82rem;">✓ 예약 확인 메시지 자동 발송됨</span></div>
+            <div class="report-item-label">📅 신규 예약 확정</div>
+            <div class="report-item-value">김민준 고객님 — 금요일 19:30 김두인 원장님<br>예약금 50,000원 수령 완료<br><span style="color:var(--accent3);font-size:.82rem;">✓ 확인 문자 자동 발송됨</span></div>
           </div>
           <div class="report-item">
-            <div class="report-item-label">💬 상담 요약</div>
-            <div class="report-item-value">총 3건 상담 · 예약 전환 2건<br>주요 문의: 가격, 예약 가능 시간</div>
+            <div class="report-item-label">💬 오늘 상담 현황</div>
+            <div class="report-item-value">총 7건 상담 · 예약 전환 5건 (전환율 71%)<br>주요 문의: 여드름 흉터, 리프팅</div>
           </div>
           <div class="report-item">
-            <div class="report-item-label">🌍 언어 감지</div>
-            <div class="report-item-value">한국어 2건 · 영어 1건 자동 처리 완료</div>
+            <div class="report-item-label">🌍 언어별 상담</div>
+            <div class="report-item-value">한국어 4건 · 일본어 2건 · 영어 1건 자동 처리</div>
           </div>
         </div>
         <div class="report-footer">카카오톡으로 실시간 전송됩니다 💬</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOREIGN MARKET -->
+<section class="foreign-section" id="foreign">
+  <div class="inner">
+    <div class="reveal" style="text-align:center;">
+      <span class="section-label" style="color:#a89fff;border-color:rgba(108,99,255,.4);background:rgba(108,99,255,.2);">외국인 시장</span>
+      <h2 class="section-title" style="color:#fff;">지금 이 순간도<br>외국인 고객이 문의하고 있습니다</h2>
+      <p class="section-desc" style="color:rgba(255,255,255,.6);">영어 못한다고 놓치지 마세요 — Bookit이 24시간 자동으로 응대합니다.</p>
+      <div class="divider" style="margin:1rem auto;"></div>
+    </div>
+    <div class="foreign-grid reveal">
+      <div class="foreign-card">
+        <div class="foreign-num">5배</div>
+        <div class="foreign-title">외국인 미용실 예약 증가</div>
+        <div class="foreign-desc">2024년 상반기 기준 전년 대비 5배 증가. K팝 아이돌 헤어스타일이 필수 관광 코스로 등극하며 미국·유럽 관광객까지 방문.</div>
+      </div>
+      <div class="foreign-card">
+        <div class="foreign-num">90%</div>
+        <div class="foreign-title">명동 준오헤어 외국인 비율</div>
+        <div class="foreign-desc">명동 일부 미용실은 외국인 전용 매장 전환을 고민할 정도. 그러나 직원들이 영어를 못해 응대를 포기하고 있는 게 현실.</div>
+      </div>
+      <div class="foreign-card">
+        <div class="foreign-num">즉시</div>
+        <div class="foreign-title">Bookit 자동 다국어 응대</div>
+        <div class="foreign-desc">외국인이 인스타에서 발견 → 카카오채널로 문의 → Bookit이 해당 언어로 즉시 자동 응대 → 예약 확정까지 완성.</div>
       </div>
     </div>
   </div>
@@ -412,21 +551,20 @@
     <div class="reveal" style="text-align:center;">
       <span class="section-label">Pricing</span>
       <h2 class="section-title">합리적인 요금제</h2>
-      <p class="section-desc">상담원 한 명 월급보다 저렴하게 — 24시간 AI 상담원을 운영하세요.</p>
+      <p class="section-desc">신청 후 1~2일 내 바로 사용 시작 — 상담원 한 명 월급보다 훨씬 저렴하게 24시간 AI 상담원을 운영하세요.</p>
       <div class="divider" style="margin:1rem auto;"></div>
     </div>
     <div class="price-grid">
       <div class="price-card reveal">
         <div class="price-name">스타터</div>
         <div class="price-desc">소규모 업종 시작용</div>
-        <div class="price-amount">99,000<span>원</span></div>
+        <div class="price-amount">29,000<span>원</span></div>
         <div class="price-period">/ 월 (VAT 별도)</div>
         <div class="price-features">
           <div class="price-feat-item">AI 자연어 상담</div>
-          <div class="price-feat-item">카카오채널 연동 1개</div>
-          <div class="price-feat-item">월 500건 상담</div>
-          <div class="price-feat-item">기본 리포트</div>
-          <div class="price-feat-item">한국어·영어 지원</div>
+          <div class="price-feat-item">카카오채널 연동</div>
+          <div class="price-feat-item">24시간 자동 응대</div>
+          <div class="price-feat-item">기본 리포트 제공</div>
         </div>
         <a href="#contact" class="btn-price outline">시작하기</a>
       </div>
@@ -434,28 +572,29 @@
         <div class="price-popular-badge">🔥 가장 인기</div>
         <div class="price-name">비즈니스</div>
         <div class="price-desc">성장하는 업종에 최적</div>
-        <div class="price-amount">199,000<span>원</span></div>
+        <div class="price-amount">550,000<span>원</span></div>
         <div class="price-period">/ 월 (VAT 별도)</div>
         <div class="price-features">
           <div class="price-feat-item">AI 자연어 상담</div>
-          <div class="price-feat-item">카카오·네이버 연동</div>
-          <div class="price-feat-item">월 2,000건 상담</div>
-          <div class="price-feat-item">실시간 리포트</div>
+          <div class="price-feat-item">카카오채널 연동</div>
           <div class="price-feat-item">100개 이상 언어 지원</div>
           <div class="price-feat-item">예약 자동 완성</div>
+          <div class="price-feat-item">실시간 리포트</div>
+          <div class="price-feat-item">AI 원장님 매칭 & 업셀링</div>
+          <div class="price-feat-item">노쇼 방지 예약금 결제</div>
         </div>
         <a href="#contact" class="btn-price filled">시작하기</a>
       </div>
       <div class="price-card reveal">
-        <div class="price-name">엔터프라이즈</div>
-        <div class="price-desc">대형 업종·프랜차이즈</div>
-        <div class="price-amount">문의<span></span></div>
-        <div class="price-period">맞춤 견적 안내</div>
+        <div class="price-name">커스터마이즈</div>
+        <div class="price-desc">프랜차이즈·대형 업종</div>
+        <div class="price-amount" style="font-size:1.8rem;">맞춤 견적</div>
+        <div class="price-period">전담 매니저 상담 후 안내</div>
         <div class="price-features">
-          <div class="price-feat-item">무제한 상담</div>
-          <div class="price-feat-item">멀티 채널 연동</div>
+          <div class="price-feat-item">비즈니스 전체 포함</div>
+          <div class="price-feat-item">멀티 채널 동시 운영</div>
           <div class="price-feat-item">전담 매니저 배정</div>
-          <div class="price-feat-item">커스텀 리포트</div>
+          <div class="price-feat-item">커스텀 AI 학습</div>
           <div class="price-feat-item">API 연동 지원</div>
           <div class="price-feat-item">SLA 보장</div>
         </div>
@@ -471,7 +610,7 @@
     <div class="reveal" style="text-align:center;">
       <span class="section-label">Industries</span>
       <h2 class="section-title">어떤 업종이든 OK</h2>
-      <p class="section-desc">카카오채널·네이버톡톡을 사용하는 모든 업종에 적용 가능합니다.</p>
+      <p class="section-desc">카카오채널을 사용하는 모든 업종에 적용 가능합니다.</p>
       <div class="divider" style="margin:1rem auto;"></div>
     </div>
     <div class="industry-grid reveal">
@@ -491,8 +630,8 @@
 <section class="cta-section" id="contact">
   <div class="inner">
     <div class="reveal">
-      <h2 class="cta-title">지금 바로 시작하세요<br><span style="background:linear-gradient(135deg,#6c63ff,#43e97b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">14일 무료 체험</span></h2>
-      <p class="cta-desc">설치 없이 5분 만에 연동 완료 — 지금 신청하시면 전담 매니저가 직접 셋업을 도와드립니다.</p>
+      <h2 class="cta-title">지금 신청하면<br><span style="background:linear-gradient(135deg,#6c63ff,#43e97b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">1~2일 내 바로 시작</span></h2>
+      <p class="cta-desc">신청 후 전담 매니저가 직접 셋업을 도와드립니다.<br>강남권 선착순 3개 지점은 커스텀 빌딩을 특별 프로모션 가격으로 제공합니다.</p>
       <div class="cta-btns">
         <a href="https://pf.kakao.com/_YOUR_CHANNEL/chat" target="_blank" class="btn-cta-main">💬 카카오톡으로 무료 상담</a>
         <a href="mailto:posthit@naver.com" class="btn-cta-sub">✉️ 이메일 문의</a>
@@ -506,8 +645,8 @@
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="./logo.jpg" alt="Bookit">
-        <p style="margin-top:1rem;">AI가 상담하고, 예약까지 완성.<br>카카오채널·네이버톡톡 AI 자동화 솔루션.</p>
+        <div class="footer-logo-wrap"><img src="./logo.jpg" alt="Bookit"></div>
+        <p>AI가 상담하고, 예약까지 완성.<br>카카오채널 AI 자동화 솔루션.</p>
       </div>
       <div class="footer-col">
         <h4>서비스</h4>
@@ -524,21 +663,52 @@
     </div>
     <div class="footer-bottom">
       <div class="footer-copy">© 2026 Bookit (팬토리). All rights reserved. 사업자등록번호: 897-22-02307</div>
-      <div class="footer-links">
-        <a href="#">이용약관</a>
-        <a href="#">개인정보처리방침</a>
-      </div>
     </div>
   </div>
 </footer>
 
 <script>
+  /* REVEAL */
   const revealObserver = new IntersectionObserver(function(entries){
     entries.forEach(function(entry){
       if(entry.isIntersecting){ entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); }
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(function(el){ revealObserver.observe(el); });
+
+  /* CHAT ANIMATION */
+  const messages = [
+    { id: 'msg1', delay: 500 },
+    { id: 'msg2', delay: 1800 },
+    { id: 'msg3', delay: 3000 }
+  ];
+
+  function animateChat() {
+    messages.forEach(function(m) {
+      setTimeout(function() {
+        const el = document.getElementById(m.id);
+        if(el) el.classList.add('show');
+        if(m.id === 'msg3') {
+          setTimeout(function() {
+            const bubble = document.getElementById('typingBubble');
+            if(bubble) bubble.innerHTML = '다음 주 금요일 19:30, 흉터 전문 김두인 원장님 예약 가능합니다! 😊 예약금 5만원 결제하시면 바로 확정해드릴게요.';
+          }, 2000);
+        }
+      }, m.delay);
+    });
+  }
+
+  const heroObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if(entry.isIntersecting) {
+        animateChat();
+        heroObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+
+  const chatEl = document.getElementById('chatMessages');
+  if(chatEl) heroObserver.observe(chatEl);
 </script>
 </body>
 </html>
