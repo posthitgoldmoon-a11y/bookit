@@ -526,6 +526,122 @@
   </div>
 </section>
 
+<!-- TAB SCENARIO -->
+<section class="section-wrap" id="tab-scenario" style="background:#f7f8ff;">
+  <div class="inner">
+    <div class="reveal" style="text-align:center;">
+      <span class="section-label">업종별 AI 시나리오</span>
+      <h2 class="section-title">우리 업종 용어를<br>정확히 압니다</h2>
+      <p class="section-desc">탭을 눌러 우리 업종 AI가 어떻게 대화하는지 직접 확인해보세요.</p>
+      <div class="divider" style="margin:1rem auto;"></div>
+    </div>
+    <div style="display:flex;justify-content:center;gap:1rem;margin-bottom:2.5rem;flex-wrap:wrap;">
+      <button onclick="showTab('dr')" id="tab-dr" style="padding:.7rem 2rem;border-radius:50px;border:2px solid #1aa0bc;background:#1aa0bc;color:#fff;font-weight:800;font-size:.95rem;cursor:pointer;transition:all .2s;">🏥 Bookit_Dr</button>
+      <button onclick="showTab('gourmet')" id="tab-gourmet" style="padding:.7rem 2rem;border-radius:50px;border:2px solid #e8e8f0;background:#fff;color:#888;font-weight:800;font-size:.95rem;cursor:pointer;transition:all .2s;">🍽️ Bookit_Gourmet</button>
+      <button onclick="showTab('beauty')" id="tab-beauty" style="padding:.7rem 2rem;border-radius:50px;border:2px solid #e8e8f0;background:#fff;color:#888;font-weight:800;font-size:.95rem;cursor:pointer;transition:all .2s;">✂️ Bookit_Beauty</button>
+    </div>
+
+    <!-- Dr 시나리오 -->
+    <div id="scenario-dr" style="display:block;">
+      <div style="background:linear-gradient(135deg,#1a1150,#0d6e8a);border-radius:24px;padding:2.5rem;max-width:700px;margin:0 auto;">
+        <div style="color:#7dd8e8;font-size:.85rem;font-weight:700;margin-bottom:1.5rem;">💬 Bookit_Dr — 피부과 원장님 추천 + 예약 시나리오</div>
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+          <div style="display:flex;gap:.8rem;">
+            <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#1aa0bc,#43e97b);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem;">🤖</div>
+            <div style="background:rgba(26,160,188,.3);border-radius:14px;border-top-left-radius:4px;padding:.8rem 1.1rem;font-size:.88rem;color:#fff;line-height:1.7;">안녕하세요! 😊 어떤 피부 고민으로 오셨나요?</div>
+          </div>
+          <div style="display:flex;gap:.8rem;flex-direction:row-reverse;">
+            <div style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem;">👤</div>
+            <div style="background:rgba(255,255,255,.15);border-radius:14px;border-top-right-radius:4px;padding:.8rem 1.1rem;font-size:.88rem;color:#fff;line-height:1.7;">여드름 흉터랑 모공이 심한데 어떤 원장님이 잘 봐주세요?</div>
+          </div>
+          <div style="display:flex;gap:.8rem;">
+            <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#1aa0bc,#43e97b);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem;">🤖</div>
+            <div style="background:rgba(26,160,188,.3);border-radius:14px;border-top-left-radius:4px;padding:.8rem 1.1rem;font-size:.88rem;color:#fff;line-height:1.7;">흉터모공은 김두인 원장님이 전문이세요! 😊<br><br>🔥 <strong>김두인 원장님</strong> — "분화구 흉터도 새 살 돋게 해주셨어요" 후기 다수<br>👼 <strong>이마음 원장님</strong> — 통증 최소화 마취 크림 전문, 예민한 피부 추천<br><br>어떤 분으로 예약 잡아드릴까요?</div>
+          </div>
+          <div style="display:flex;gap:.8rem;flex-direction:row-reverse;">
+            <div style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem;">👤</div>
+            <div style="background:rgba(255,255,255,.15);border-radius:14px;border-top-right-radius:4px;padding:.8rem 1.1rem;font-size:.88rem;color:#fff;line-height:1.7;">김두인 원장님으로 이번 주 토요일 오후요!</div>
+          </div>
+          <div style="display:flex;gap:.8rem;">
+            <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#1aa0bc,#43e97b);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem;">🤖</div>
+            <div style="background:rgba(26,160,188,.3);border-radius:14px;border-top-left-radius:4px;padding:.8rem 1.1rem;font-size:.88rem;color:#fff;line-height:1.7;">토요일 2시, 3시 가능합니다! 시간 선택해 주시면 예약 확정해드릴게요 ✅</div>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem;background:rgba(67,233,123,.15);border:1px solid rgba(67,233,123,.3);border-radius:12px;padding:.8rem 1rem;font-size:.82rem;color:#43e97b;text-align:center;">💡 원장님별 전문 분야 + 실제 후기 기반 자동 매칭</div>
+      </div>
+    </div>
+
+    <!-- Gourmet 시나리오 -->
+    <div id="scenario-gourmet" style="display:none;">
+      <div style="background:linear-gradient(135deg,#1a1150,#3d1f00);border-radius:24px;padding:2.5rem;max-width:700px;margin:0 auto;">
+        <div style="color:#ffd080;font-size:.85rem;font-weight:700;margin-bottom:1.5rem;">💬 Bookit_Gourmet — 파인다이닝 특화 접객 시나리오</div>
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+          <div style="display:flex;gap:.8rem;flex-direction:row-reverse;">
+            <div style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem;">👤</div>
+            <div style="background:rgba(255,255,255,.15);border-radius:14px;border-top-right-radius:4px;padding:.8rem 1.1rem;font-size:.88rem;color:#fff;line-height:1.7;">다음 주 금요일 저녁 4명 예약하고 싶은데요, 새우 알레르기가 있어요.</div>
+          </div>
+          <div style="display:flex;gap:.8rem;">
+            <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#ff8c00,#e06b00);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem;">🤖</div>
+            <div style="background:rgba(255,140,0,.25);border-radius:14px;border-top-left-radius:4px;padding:.8rem 1.1rem;font-size:.88rem;color:#fff;line-height:1.7;">네, 새우 알레르기 주방에 미리 전달해드릴게요! 🦐❌<br>금요일 저녁은 창가 자리와 내부 자리 중 선호하시는 곳이 있으신가요?</div>
+          </div>
+          <div style="display:flex;gap:.8rem;flex-direction:row-reverse;">
+            <div style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem;">👤</div>
+            <div style="background:rgba(255,255,255,.15);border-radius:14px;border-top-right-radius:4px;padding:.8rem 1.1rem;font-size:.88rem;color:#fff;line-height:1.7;">창가 자리로 부탁드려요. 그리고 와인 한 병 가져가도 되나요?</div>
+          </div>
+          <div style="display:flex;gap:.8rem;">
+            <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#ff8c00,#e06b00);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem;">🤖</div>
+            <div style="background:rgba(255,140,0,.25);border-radius:14px;border-top-left-radius:4px;padding:.8rem 1.1rem;font-size:.88rem;color:#fff;line-height:1.7;">콜키지 가능합니다! 🍷 콜키지 비용은 1병당 30,000원이며 오픈 후 서빙 도와드립니다.<br>창가 4인석 금요일 7시로 예약 확정해드릴까요?</div>
+          </div>
+          <div style="display:flex;gap:.8rem;flex-direction:row-reverse;">
+            <div style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem;">👤</div>
+            <div style="background:rgba(255,255,255,.15);border-radius:14px;border-top-right-radius:4px;padding:.8rem 1.1rem;font-size:.88rem;color:#fff;line-height:1.7;">좋아요, 확정해주세요!</div>
+          </div>
+          <div style="display:flex;gap:.8rem;">
+            <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#ff8c00,#e06b00);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem;">🤖</div>
+            <div style="background:rgba(255,140,0,.25);border-radius:14px;border-top-left-radius:4px;padding:.8rem 1.1rem;font-size:.88rem;color:#fff;line-height:1.7;">예약 확정됐습니다! 🎉 새우 알레르기창가 4인석콜키지 1병 모두 메모해두었습니다. 맛있는 시간 되세요!</div>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem;background:rgba(255,214,0,.15);border:1px solid rgba(255,214,0,.3);border-radius:12px;padding:.8rem 1rem;font-size:.82rem;color:#ffd080;text-align:center;">💡 알레르기 안내  창가 자리  콜키지 비용까지 — 파인다이닝 접객 완벽 대응</div>
+      </div>
+    </div>
+
+    <!-- Beauty 시나리오 -->
+    <div id="scenario-beauty" style="display:none;">
+      <div style="background:linear-gradient(135deg,#1a1150,#3d0a1e);border-radius:24px;padding:2.5rem;max-width:700px;margin:0 auto;">
+        <div style="color:#ffb3c1;font-size:.85rem;font-weight:700;margin-bottom:1.5rem;">💬 Bookit_Beauty — 헤어샵/네일샵 특화 시나리오</div>
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+          <div style="display:flex;gap:.8rem;flex-direction:row-reverse;">
+            <div style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem;">👤</div>
+            <div style="background:rgba(255,255,255,.15);border-radius:14px;border-top-right-radius:4px;padding:.8rem 1.1rem;font-size:.88rem;color:#fff;line-height:1.7;">이번에 버진헤어에서 탈색 후 애쉬그레이 하고 싶은데 얼마나 걸려요?</div>
+          </div>
+          <div style="display:flex;gap:.8rem;">
+            <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#ff6584,#e0456a);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem;">🤖</div>
+            <div style="background:rgba(255,101,132,.25);border-radius:14px;border-top-left-radius:4px;padding:.8rem 1.1rem;font-size:.88rem;color:#fff;line-height:1.7;">버진헤어 탈색 + 애쉬그레이면 보통 4~5시간 정도 잡으셔야 해요! 🎨<br>모발 상태에 따라 달라질 수 있어서 — 혹시 레퍼런스 사진 있으시면 보내주시면 디자이너가 미리 확인해드릴게요.</div>
+          </div>
+          <div style="display:flex;gap:.8rem;flex-direction:row-reverse;">
+            <div style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem;">👤</div>
+            <div style="background:rgba(255,255,255,.15);border-radius:14px;border-top-right-radius:4px;padding:.8rem 1.1rem;font-size:.88rem;color:#fff;line-height:1.7;">[사진 전송] 이런 느낌이요! 민준 디자이너님으로 하고 싶어요.</div>
+          </div>
+          <div style="display:flex;gap:.8rem;">
+            <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#ff6584,#e0456a);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem;">🤖</div>
+            <div style="background:rgba(255,101,132,.25);border-radius:14px;border-top-left-radius:4px;padding:.8rem 1.1rem;font-size:.88rem;color:#fff;line-height:1.7;">사진 확인했어요! ✨ 민준 디자이너님 토요일 오전 10시 가능하세요.<br>탈색 + 염색 총 5시간 예상이고, 시술 전 두피 상태 체크도 해드려요. 예약할까요?</div>
+          </div>
+          <div style="display:flex;gap:.8rem;flex-direction:row-reverse;">
+            <div style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem;">👤</div>
+            <div style="background:rgba(255,255,255,.15);border-radius:14px;border-top-right-radius:4px;padding:.8rem 1.1rem;font-size:.88rem;color:#fff;line-height:1.7;">네 예약해주세요!</div>
+          </div>
+          <div style="display:flex;gap:.8rem;">
+            <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#ff6584,#e0456a);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem;">🤖</div>
+            <div style="background:rgba(255,101,132,.25);border-radius:14px;border-top-left-radius:4px;padding:.8rem 1.1rem;font-size:.88rem;color:#fff;line-height:1.7;">토요일 10시 민준 디자이너님 예약 확정! 💕 당일 레퍼런스 사진 다시 보여주시면 바로 시작할 수 있어요. 기대되네요!</div>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem;background:rgba(255,101,132,.15);border:1px solid rgba(255,101,132,.3);border-radius:12px;padding:.8rem 1rem;font-size:.82rem;color:#ffb3c1;text-align:center;">💡 디자이너 지정  시술 소요시간 계산  레퍼런스 사진 확인까지 — 뷰티 현장 언어 완벽 구사</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- SCENARIO -->
 <section class="scenario-section" id="scenario">
   <div class="inner">
@@ -849,6 +965,26 @@
   </div>
 </footer>
 <script>
+  /* TAB SCENARIO */
+  function showTab(tab) {
+    ["dr","gourmet","beauty"].forEach(function(t){
+      var s = document.getElementById("scenario-"+t);
+      var b = document.getElementById("tab-"+t);
+      if(s) s.style.display = "none";
+      if(b){ b.style.background="#fff"; b.style.color="#888"; b.style.borderColor="#e8e8f0"; }
+    });
+    var active = document.getElementById("scenario-"+tab);
+    var activeBtn = document.getElementById("tab-"+tab);
+    if(active) active.style.display = "block";
+    if(activeBtn){
+      var colors = {dr:"#1aa0bc", gourmet:"#ff8c00", beauty:"#ff6584"};
+      activeBtn.style.background = colors[tab];
+      activeBtn.style.color = "#fff";
+      activeBtn.style.borderColor = colors[tab];
+    }
+  }
+
+
   const revealObserver = new IntersectionObserver(function(entries){
     entries.forEach(function(entry){
       if(entry.isIntersecting){ entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); }
@@ -892,6 +1028,7 @@
 </script>
 </body>
 </html>
+
 
 
 
