@@ -298,20 +298,27 @@
           </div>
         </div>
         <div class="chat-messages" id="chatMessages">
-          <div class="chat-msg ai" id="msg1">
+          <div class="chat-msg ai" id="msg1" style="opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease;">
             <div class="bubble-dot">🤖</div>
-            <div class="bubble">안녕하세요! 😊 뻔한 챗봇 버튼 말고, 그냥 친구한테 카톡하듯 편하게 말씀해 주세요!</div>
+            <div class="bubble">안녕하세요! 😊 답답한 챗봇 버튼 말고, 그냥 친구한테 카톡하듯 편하게 말씀해 주세요!</div>
           </div>
-          <div class="chat-msg user" id="msg2">
+          <div class="chat-msg user" id="msg2" style="opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease;">
             <div class="bubble">다음 주 금요일 퇴근 후에 여드름 흉터 치료 예약 될까요?</div>
             <div class="bubble-dot">👤</div>
           </div>
-          <div class="chat-msg ai" id="msg3">
+          <div class="chat-msg ai" id="msg3" style="opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease;">
             <div class="bubble-dot">🤖</div>
-            <div class="bubble" id="typingBubble">
-              <div class="typing-indicator"><span></span><span></span><span></span></div>
-            </div>
+            <div class="bubble" id="typingBubble"><div class="typing-indicator"><span></span><span></span><span></span></div></div>
           </div>
+          <div class="chat-msg user" id="msg4" style="opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease;">
+            <div class="bubble">여자친구랑 같이 가도 되나요?? 😅</div>
+            <div class="bubble-dot">👤</div>
+          </div>
+          <div class="chat-msg ai" id="msg5" style="opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease;">
+            <div class="bubble-dot">🤖</div>
+            <div class="bubble">물론이죠! 😄 같이 오시면 더 좋죠~ 다만 진료는 1:1이라 여자친구분은 대기실에서 응원해 주셔야 해요 🙈 혹시 여자친구분도 피부 고민 있으시면 연속 예약도 가능합니다. 같이 예뻐지고 나가세요 ✨</div>
+          </div>
+        </div>
         </div>
       </div>
     </div>
@@ -993,25 +1000,28 @@
   document.querySelectorAll('.reveal').forEach(function(el){ revealObserver.observe(el); });
 
   /* CHAT ANIMATION */
-  const messages = [
-    { id: 'msg1', delay: 500 },
-    { id: 'msg2', delay: 1800 },
-    { id: 'msg3', delay: 3000 }
-  ];
-
+  /* CHAT ANIMATION */
   function animateChat() {
-    messages.forEach(function(m) {
-      setTimeout(function() {
-        const el = document.getElementById(m.id);
-        if(el) el.classList.add('show');
-        if(m.id === 'msg3') {
-          setTimeout(function() {
-            const bubble = document.getElementById('typingBubble');
-            if(bubble) bubble.innerHTML = '다음 주 금요일 19:30, 흉터 전문 김두인 원장님 예약 가능합니다! 😊 예약금 5만원 결제하시면 바로 확정해드릴게요.';
-          }, 2000);
+    var seq = [
+      { id:"msg1", delay:600 },
+      { id:"msg2", delay:2000 },
+      { id:"msg3", delay:3400 },
+      { id:"msg4", delay:6000 },
+      { id:"msg5", delay:7500 }
+    ];
+    seq.forEach(function(m){
+      setTimeout(function(){
+        var el = document.getElementById(m.id);
+        if(el){ el.style.opacity="1"; el.style.transform="none"; }
+        if(m.id === "msg3"){
+          setTimeout(function(){
+            var b = document.getElementById("typingBubble");
+            if(b) b.innerHTML = "다음 주 금요일 19:30, 흉터 전문 김두인 원장님 예약 가능합니다! 😊<br>확정 도와드릴까요?";
+          }, 1800);
         }
       }, m.delay);
     });
+  }
   }
 
   const heroObserver = new IntersectionObserver(function(entries) {
