@@ -1212,6 +1212,19 @@
   #bookit-widget-btn { position:fixed; bottom:30px; right:30px; width:70px; height:70px; background:none; border:none; border-radius:50%; cursor:pointer; box-shadow:0 4px 16px rgba(0,0,0,.25); z-index:9999; transition:transform .2s; padding:0; overflow:hidden; }
   #bookit-widget-btn:hover { transform:scale(1.1); }
 
+  @keyframes widget-float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+  }
+  #bookit-widget-btn {
+    animation: widget-float 2.5s ease-in-out infinite;
+  }
+  #bookit-widget-btn:hover {
+    animation: none;
+    transform: scale(1.1);
+  }
+
+
   #bookit-widget-tooltip {
     position: fixed;
     bottom: 88px;
