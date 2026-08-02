@@ -1,8 +1,8 @@
 (function() {
   'use strict';
 
-  const WIDGET_API = '/widget/api/chat';
-  const RESET_API  = '/widget/api/reset';
+  const WIDGET_API = 'https://bookit.ai.kr/widget/api/chat';
+  const RESET_API  = 'https://bookit.ai.kr/widget/api/reset';
 
   let sessionId = null;
   let isOpen    = false;
