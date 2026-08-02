@@ -30,7 +30,6 @@
       background: #ff4757; color: #fff; font-size: 11px; font-weight: 700;
       border-radius: 10px; padding: 2px 6px; display: none;
     }
-
     #bk-widget-box {
       position: fixed; bottom: 230px; right: 28px; z-index: 99998;
       width: 360px; height: 560px; max-height: 80vh;
@@ -44,7 +43,6 @@
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-
     #bk-header {
       background: #FEE500;
       padding: 16px 18px; display: flex; align-items: center; gap: 12px;
@@ -65,18 +63,15 @@
       padding: 0; transition: color .15s;
     }
     #bk-header-close:hover { color: #3A1D1D; }
-
     #bk-messages {
       flex: 1; overflow-y: auto; padding: 16px 14px;
       background: #f7f8fc; display: flex; flex-direction: column; gap: 10px;
     }
     #bk-messages::-webkit-scrollbar { width: 4px; }
     #bk-messages::-webkit-scrollbar-thumb { background: #d0d5e8; border-radius: 2px; }
-
     .bk-msg { display: flex; align-items: flex-end; gap: 8px; max-width: 85%; }
     .bk-msg.bk-bot { align-self: flex-start; }
     .bk-msg.bk-user { align-self: flex-end; flex-direction: row-reverse; }
-
     .bk-avatar {
       width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0;
       background: #FEE500;
@@ -97,7 +92,6 @@
       background: #FEE500;
       color: #3A1D1D; border-bottom-right-radius: 4px;
     }
-
     .bk-typing {
       display: flex; align-items: center; gap: 5px;
       padding: 10px 14px; background: #fff; border-radius: 16px;
@@ -113,7 +107,6 @@
       0%,60%,100% { transform: translateY(0); }
       30% { transform: translateY(-6px); }
     }
-
     #bk-quick-btns {
       display: flex; gap: 8px; padding: 10px 14px 4px;
       flex-shrink: 0; background: #f7f8fc;
@@ -132,7 +125,6 @@
       border: 1.5px solid #FEE500;
     }
     .bk-quick-btn.home:hover { background: #FFFBE0; }
-
     #bk-input-row {
       display: flex; align-items: center; gap: 8px;
       padding: 10px 12px 14px; background: #fff; flex-shrink: 0;
@@ -153,7 +145,6 @@
     }
     #bk-send:hover { transform: scale(1.08); }
     #bk-send svg { width: 17px; height: 17px; fill: #3A1D1D; }
-
     @media (max-width: 420px) {
       #bk-widget-box { width: calc(100vw - 24px); right: 12px; bottom: 220px; }
       #bk-widget-btn { right: 16px; bottom: 150px; }
