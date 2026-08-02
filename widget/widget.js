@@ -11,17 +11,17 @@
   style.textContent = `
     #bk-widget-btn {
       position: fixed; bottom: 160px; right: 28px; z-index: 99999;
-      width: auto; height: auto; border-radius: 24px;
+      width: 70px; height: 70px; border-radius: 50%;
       background: #FEE500;
       box-shadow: 0 4px 20px rgba(0,0,0,0.2);
       border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
-      gap: 8px; padding: 12px 18px;
+      flex-direction: column; gap: 2px; padding: 0;
       transition: transform .2s, box-shadow .2s;
     }
-    #bk-widget-btn:hover { transform: scale(1.05); box-shadow: 0 6px 28px rgba(0,0,0,0.25); }
-    #bk-widget-btn svg { width: 22px; height: 22px; fill: #3A1D1D; flex-shrink: 0; }
+    #bk-widget-btn:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(0,0,0,0.25); }
+    #bk-widget-btn svg { width: 26px; height: 26px; fill: #3A1D1D; flex-shrink: 0; }
     #bk-widget-btn-label {
-      font-size: 14px; font-weight: 700; color: #3A1D1D;
+      font-size: 10px; font-weight: 700; color: #3A1D1D;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       white-space: nowrap;
     }
