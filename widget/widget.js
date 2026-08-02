@@ -7,19 +7,24 @@
   let sessionId = null;
   let isOpen    = false;
 
-  /* ── 스타일 ── */
   const style = document.createElement('style');
   style.textContent = `
     #bk-widget-btn {
-      position: fixed; bottom: 28px; right: 28px; z-index: 99999;
-      width: 60px; height: 60px; border-radius: 50%;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      box-shadow: 0 4px 20px rgba(102,126,234,0.55);
+      position: fixed; bottom: 110px; right: 28px; z-index: 99999;
+      width: auto; height: auto; border-radius: 24px;
+      background: #FEE500;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
       border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      gap: 8px; padding: 12px 18px;
       transition: transform .2s, box-shadow .2s;
     }
-    #bk-widget-btn:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(102,126,234,0.7); }
-    #bk-widget-btn svg { width: 28px; height: 28px; fill: #fff; }
+    #bk-widget-btn:hover { transform: scale(1.05); box-shadow: 0 6px 28px rgba(0,0,0,0.25); }
+    #bk-widget-btn svg { width: 22px; height: 22px; fill: #3A1D1D; flex-shrink: 0; }
+    #bk-widget-btn-label {
+      font-size: 14px; font-weight: 700; color: #3A1D1D;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      white-space: nowrap;
+    }
     #bk-badge {
       position: absolute; top: -4px; right: -4px;
       background: #ff4757; color: #fff; font-size: 11px; font-weight: 700;
@@ -27,7 +32,7 @@
     }
 
     #bk-widget-box {
-      position: fixed; bottom: 100px; right: 28px; z-index: 99998;
+      position: fixed; bottom: 180px; right: 28px; z-index: 99998;
       width: 360px; height: 560px; max-height: 80vh;
       background: #fff; border-radius: 20px;
       box-shadow: 0 8px 40px rgba(0,0,0,0.18);
@@ -41,25 +46,25 @@
     }
 
     #bk-header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: #FEE500;
       padding: 16px 18px; display: flex; align-items: center; gap: 12px;
       flex-shrink: 0;
     }
     #bk-header-avatar {
       width: 40px; height: 40px; border-radius: 50%;
-      background: rgba(255,255,255,0.25);
+      background: rgba(0,0,0,0.1);
       display: flex; align-items: center; justify-content: center;
       font-size: 20px; flex-shrink: 0;
     }
     #bk-header-info { flex: 1; }
-    #bk-header-info .bk-name { color: #fff; font-size: 15px; font-weight: 700; }
-    #bk-header-info .bk-status { color: rgba(255,255,255,0.8); font-size: 12px; margin-top: 2px; }
+    #bk-header-info .bk-name { color: #3A1D1D; font-size: 15px; font-weight: 700; }
+    #bk-header-info .bk-status { color: rgba(0,0,0,0.5); font-size: 12px; margin-top: 2px; }
     #bk-header-close {
       background: none; border: none; cursor: pointer;
-      color: rgba(255,255,255,0.8); font-size: 22px; line-height: 1;
+      color: rgba(0,0,0,0.4); font-size: 22px; line-height: 1;
       padding: 0; transition: color .15s;
     }
-    #bk-header-close:hover { color: #fff; }
+    #bk-header-close:hover { color: #3A1D1D; }
 
     #bk-messages {
       flex: 1; overflow-y: auto; padding: 16px 14px;
@@ -74,7 +79,7 @@
 
     .bk-avatar {
       width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0;
-      background: linear-gradient(135deg, #667eea, #764ba2);
+      background: #FEE500;
       display: flex; align-items: center; justify-content: center;
       font-size: 14px;
     }
@@ -89,8 +94,8 @@
       box-shadow: 0 1px 4px rgba(0,0,0,0.08);
     }
     .bk-user .bk-bubble {
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: #fff; border-bottom-right-radius: 4px;
+      background: #FEE500;
+      color: #3A1D1D; border-bottom-right-radius: 4px;
     }
 
     .bk-typing {
@@ -118,15 +123,15 @@
       font-size: 12.5px; font-weight: 600; cursor: pointer; transition: all .15s;
     }
     .bk-quick-btn.trial {
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: #fff; box-shadow: 0 2px 8px rgba(102,126,234,0.4);
+      background: #FEE500;
+      color: #3A1D1D; box-shadow: 0 2px 8px rgba(254,229,0,0.4);
     }
-    .bk-quick-btn.trial:hover { box-shadow: 0 4px 14px rgba(102,126,234,0.55); transform: translateY(-1px); }
+    .bk-quick-btn.trial:hover { box-shadow: 0 4px 14px rgba(254,229,0,0.55); transform: translateY(-1px); }
     .bk-quick-btn.home {
-      background: #fff; color: #667eea;
-      border: 1.5px solid #667eea;
+      background: #fff; color: #3A1D1D;
+      border: 1.5px solid #FEE500;
     }
-    .bk-quick-btn.home:hover { background: #f0f2ff; }
+    .bk-quick-btn.home:hover { background: #FFFBE0; }
 
     #bk-input-row {
       display: flex; align-items: center; gap: 8px;
@@ -139,27 +144,27 @@
       font-family: inherit; line-height: 1.4; max-height: 80px; overflow-y: auto;
       transition: border-color .2s;
     }
-    #bk-input:focus { border-color: #667eea; }
+    #bk-input:focus { border-color: #FEE500; }
     #bk-send {
       width: 38px; height: 38px; border-radius: 50%; border: none;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      background: #FEE500;
+      color: #3A1D1D; cursor: pointer; display: flex; align-items: center; justify-content: center;
       flex-shrink: 0; transition: transform .15s;
     }
     #bk-send:hover { transform: scale(1.08); }
-    #bk-send svg { width: 17px; height: 17px; fill: #fff; }
+    #bk-send svg { width: 17px; height: 17px; fill: #3A1D1D; }
 
     @media (max-width: 420px) {
-      #bk-widget-box { width: calc(100vw - 24px); right: 12px; bottom: 90px; }
-      #bk-widget-btn { right: 16px; bottom: 20px; }
+      #bk-widget-box { width: calc(100vw - 24px); right: 12px; bottom: 170px; }
+      #bk-widget-btn { right: 16px; bottom: 100px; }
     }
   `;
   document.head.appendChild(style);
 
-  /* ── HTML ── */
   document.body.insertAdjacentHTML('beforeend', `
     <button id="bk-widget-btn" aria-label="부킷 AI 상담">
       <svg viewBox="0 0 24 24"><path d="M20 2H4C2.9 2 2 2.9 2 4v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+      <span id="bk-widget-btn-label">부킷상담</span>
       <span id="bk-badge">1</span>
     </button>
 
@@ -189,10 +194,8 @@
     </div>
   `);
 
-  /* ── 초기 인사 메시지 ── */
   const WELCOME = `안녕하세요! 😊 부킷 AI 상담사입니다.\n\n카카오·라인·네이버톡톡·왓츠앱·인스타를 AI로 자동화해 드려요!\n\n🏥 병원·의원  🍽️ 식당·카페  ✂️ 헤어·뷰티\n🛒 이커머스 CS  🔢 웨이팅  💬 홈페이지 위젯\n\n어떤 업종에서 운영하고 계세요? 😄`;
 
-  /* ── 유틸 ── */
   const $msgs  = () => document.getElementById('bk-messages');
   const $input = () => document.getElementById('bk-input');
 
@@ -229,7 +232,6 @@
     if (el) el.remove();
   }
 
-  /* ── API 호출 ── */
   async function sendToAPI(payload) {
     const res = await fetch(WIDGET_API, {
       method: 'POST',
@@ -268,7 +270,6 @@
     }
   };
 
-  /* ── 이벤트 ── */
   document.getElementById('bk-widget-btn').onclick = function() {
     isOpen = !isOpen;
     const box = document.getElementById('bk-widget-box');
@@ -303,7 +304,6 @@
     this.style.height = Math.min(this.scrollHeight, 80) + 'px';
   });
 
-  /* ── 10초 후 배지 표시 (방문자 유도) ── */
   setTimeout(() => {
     if (!isOpen) {
       document.getElementById('bk-badge').style.display = 'inline';
