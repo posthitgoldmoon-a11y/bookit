@@ -10,7 +10,7 @@
   const style = document.createElement('style');
   style.textContent = `
     #bk-widget-btn {
-      position: fixed; bottom: 110px; right: 28px; z-index: 99999;
+      position: fixed; bottom: 160px; right: 28px; z-index: 99999;
       width: auto; height: auto; border-radius: 24px;
       background: #FEE500;
       box-shadow: 0 4px 20px rgba(0,0,0,0.2);
@@ -32,7 +32,7 @@
     }
 
     #bk-widget-box {
-      position: fixed; bottom: 180px; right: 28px; z-index: 99998;
+      position: fixed; bottom: 230px; right: 28px; z-index: 99998;
       width: 360px; height: 560px; max-height: 80vh;
       background: #fff; border-radius: 20px;
       box-shadow: 0 8px 40px rgba(0,0,0,0.18);
@@ -155,8 +155,8 @@
     #bk-send svg { width: 17px; height: 17px; fill: #3A1D1D; }
 
     @media (max-width: 420px) {
-      #bk-widget-box { width: calc(100vw - 24px); right: 12px; bottom: 170px; }
-      #bk-widget-btn { right: 16px; bottom: 100px; }
+      #bk-widget-box { width: calc(100vw - 24px); right: 12px; bottom: 220px; }
+      #bk-widget-btn { right: 16px; bottom: 150px; }
     }
   `;
   document.head.appendChild(style);
