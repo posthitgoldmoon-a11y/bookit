@@ -15,15 +15,25 @@
       background: #FEE500;
       box-shadow: 0 4px 20px rgba(0,0,0,0.2);
       border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
-      flex-direction: column; gap: 2px; padding: 0;
+      padding: 0;
       transition: transform .2s, box-shadow .2s;
     }
     #bk-widget-btn:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(0,0,0,0.25); }
     #bk-widget-btn svg { width: 26px; height: 26px; fill: #3A1D1D; flex-shrink: 0; }
-    #bk-widget-btn-label {
-      font-size: 10px; font-weight: 700; color: #3A1D1D;
+    #bk-tooltip {
+      position: fixed; bottom: 238px; right: 16px;
+      background: #FEE500; color: #3A1D1D;
+      font-size: 12px; font-weight: 700;
+      padding: 5px 12px; border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      white-space: nowrap; pointer-events: none;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      white-space: nowrap;
+    }
+    #bk-tooltip::after {
+      content: ''; position: absolute; bottom: -6px; right: 22px;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid #FEE500;
     }
     #bk-badge {
       position: absolute; top: -4px; right: -4px;
@@ -153,9 +163,9 @@
   document.head.appendChild(style);
 
   document.body.insertAdjacentHTML('beforeend', `
+    <div id="bk-tooltip">부킷상담</div>
     <button id="bk-widget-btn" aria-label="부킷 AI 상담">
-      <svg viewBox="0 0 24 24"><path d="M20 2H4C2.9 2 2 2.9 2 4v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
-      <span id="bk-widget-btn-label">부킷상담</span>
+      <img src="https://medi.bookit.ai.kr/widget/bookit-icon.png" style="width:70px;height:70px;border-radius:50%;object-fit:cover;display:block;" />
       <span id="bk-badge">1</span>
     </button>
 
