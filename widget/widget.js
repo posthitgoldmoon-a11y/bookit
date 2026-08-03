@@ -165,7 +165,7 @@
   document.body.insertAdjacentHTML('beforeend', `
     <div id="bk-tooltip">부킷상담</div>
     <button id="bk-widget-btn" aria-label="부킷 AI 상담">
-      <img src="https://medi.bookit.ai.kr/widget/bookit-icon.png" style="width:70px;height:70px;border-radius:50%;object-fit:cover;display:block;" />
+      <img src="https://bookit.ai.kr/widget/bookit-icon.png" style="width:70px;height:70px;border-radius:50%;object-fit:cover;display:block;" />
       <span id="bk-badge">1</span>
     </button>
 
