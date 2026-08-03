@@ -155,9 +155,14 @@
     }
     #bk-send:hover { transform: scale(1.08); }
     #bk-send svg { width: 17px; height: 17px; fill: #3A1D1D; }
-    @media (max-width: 420px) {
-      #bk-widget-box { width: calc(100vw - 32px); right: 12px; bottom: 220px; }
+    @media (max-width: 768px) {
+      #bk-widget-box {
+        width: calc(100vw - 24px); height: 70vh;
+        right: 12px; left: 12px; bottom: 0;
+        border-radius: 20px 20px 0 0;
+      }
       #bk-widget-btn { right: 16px; bottom: 150px; }
+      #bk-tooltip { right: 10px; bottom: 228px; }
     }
   `;
   document.head.appendChild(style);
@@ -277,6 +282,7 @@
     const box = document.getElementById('bk-widget-box');
     box.style.display = isOpen ? 'flex' : 'none';
     document.getElementById('bk-badge').style.display = 'none';
+    document.body.style.overflow = isOpen ? 'hidden' : '';
     if (isOpen && $msgs().children.length === 0) {
       addMsg(WELCOME, 'bot');
     }
@@ -286,6 +292,7 @@
   document.getElementById('bk-header-close').onclick = function() {
     isOpen = false;
     document.getElementById('bk-widget-box').style.display = 'none';
+    document.body.style.overflow = '';
   };
 
   document.getElementById('bk-send').onclick = function() {
