@@ -208,7 +208,8 @@
 
   function escHtml(t) {
     return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-            .replace(/\n/g,'<br>');
+            .replace(/\n/g,'<br>')
+            .replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" style="color:#1a6edb;text-decoration:underline;">$1</a>');
   }
 
   function showTyping() {
