@@ -10,7 +10,7 @@
   const style = document.createElement('style');
   style.textContent = `
     #bk-widget-btn {
-      position: fixed; bottom: 160px; right: 28px; z-index: 99999;
+      position: fixed; bottom: 160px; right: 20px; z-index: 99999;
       width: 70px; height: 70px; border-radius: 50%;
       background: #FEE500;
       box-shadow: 0 4px 20px rgba(0,0,0,0.2);
@@ -21,7 +21,7 @@
     #bk-widget-btn:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(0,0,0,0.25); }
     #bk-widget-btn svg { width: 26px; height: 26px; fill: #3A1D1D; flex-shrink: 0; }
     #bk-tooltip {
-      position: fixed; bottom: 238px; right: 16px;
+      position: fixed; bottom: 238px; right: 20px;
       background: #FEE500; color: #3A1D1D;
       font-size: 12px; font-weight: 700;
       padding: 5px 12px; border-radius: 16px;
