@@ -10,7 +10,7 @@
   const style = document.createElement('style');
   style.textContent = `
     #bk-widget-btn {
-      position: fixed; bottom: 160px; right: 20px; z-index: 99999;
+      position: fixed; bottom: 160px; right: 20px; z-index: 9998;
       width: 70px; height: 70px; border-radius: 50%;
       background: #FEE500;
       box-shadow: 0 4px 20px rgba(0,0,0,0.2);
