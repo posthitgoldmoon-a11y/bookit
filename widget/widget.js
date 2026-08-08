@@ -160,9 +160,11 @@
     #bk-send svg { width: 17px; height: 17px; fill: #3A1D1D; }
     @media (max-width: 768px) { /* mobile */
       #bk-widget-box {
-        width: calc(100vw - 24px); height: 70vh;
+        width: calc(100dvw - 24px); height: 60dvh;
+        max-width: calc(100dvw - 24px);
         right: 12px; left: 12px; bottom: 0;
         border-radius: 20px 20px 0 0;
+        box-sizing: border-box;
       }
       #bk-widget-btn { right: 16px; bottom: 150px; }
       #bk-tooltip { right: 10px; bottom: 228px; }
