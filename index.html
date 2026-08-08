@@ -1266,8 +1266,8 @@
   #bookit-widget-popup iframe { flex:1; border:none; width:100%; }
   @media(max-width:768px){ #bookit-widget-popup { width:calc(100vw - 20px); right:10px; bottom:90px; } }
 </style>
-<div id="bookit-widget-tooltip">무엇이든 물어보세요</div>
-  <button id="bookit-widget-btn" onclick="toggleWidget()"><img src="/chat-icon.png" style="width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;" /></button>
+
+  <button id="bookit-widget-btn" onclick="toggleWidget()" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;"><img src="/chat-icon.png" style="width:48px;height:48px;border-radius:50%;object-fit:cover;display:block;" /><span style="font-size:11px;font-weight:800;color:#1a1150;line-height:1;">부킷시연</span></button>
 <div id="bookit-widget-popup">
   <div class="widget-header">
     <span>💬 Bookit AI 상담</span>
