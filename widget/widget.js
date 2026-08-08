@@ -12,13 +12,16 @@
     #bk-widget-btn {
       position: fixed; bottom: 160px; right: 20px; z-index: 9998;
       width: 70px; height: 70px; border-radius: 50%;
-      background: #FEE500;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-      border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
-      padding: 0;
+      background: linear-gradient(135deg, #FEE500, #FFB300);
+      box-shadow: 0 4px 24px rgba(255,179,0,0.55), 0 0 0 3px rgba(255,179,0,0.15);
+      border: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 0; gap: 2px;
+      color: #3A1D1D; font-size: 12px; font-weight: 900; line-height: 1.2; letter-spacing: -0.3px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      text-shadow: 0 1px 2px rgba(255,255,255,0.4);
       transition: transform .2s, box-shadow .2s;
     }
-    #bk-widget-btn:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(0,0,0,0.25); }
+    #bk-widget-btn:hover { transform: scale(1.12); box-shadow: 0 8px 32px rgba(255,179,0,0.7), 0 0 0 4px rgba(255,179,0,0.2); }
     #bk-widget-btn svg { width: 26px; height: 26px; fill: #3A1D1D; flex-shrink: 0; }
     #bk-tooltip {
       display: none; position: fixed; bottom: 238px; right: 20px;
