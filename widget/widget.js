@@ -42,7 +42,7 @@
     }
     #bk-widget-box {
       position: fixed; bottom: 230px; right: 28px; z-index: 99998;
-      width: 300px; height: 500px; max-height: 80vh;
+      width: 420px; height: 620px; max-height: 85vh;
       background: #fff; border-radius: 20px;
       box-shadow: 0 8px 40px rgba(0,0,0,0.18);
       display: none; flex-direction: column; overflow: hidden;
@@ -155,7 +155,7 @@
     }
     #bk-send:hover { transform: scale(1.08); }
     #bk-send svg { width: 17px; height: 17px; fill: #3A1D1D; }
-    @media (max-width: 768px) {
+    @media (max-width: 768px) { /* mobile */
       #bk-widget-box {
         width: calc(100vw - 24px); height: 70vh;
         right: 12px; left: 12px; bottom: 0;
