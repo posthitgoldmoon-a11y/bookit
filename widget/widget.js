@@ -282,7 +282,7 @@
     const box = document.getElementById('bk-widget-box');
     box.style.display = isOpen ? 'flex' : 'none';
     document.getElementById('bk-badge').style.display = 'none';
-    document.body.style.overflow = isOpen ? 'hidden' : '';
+    
     if (isOpen && $msgs().children.length === 0) {
       addMsg(WELCOME, 'bot');
     }
@@ -292,7 +292,7 @@
   document.getElementById('bk-header-close').onclick = function() {
     isOpen = false;
     document.getElementById('bk-widget-box').style.display = 'none';
-    document.body.style.overflow = '';
+    
   };
 
   document.getElementById('bk-send').onclick = function() {
