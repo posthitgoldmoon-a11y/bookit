@@ -1252,13 +1252,13 @@
     50% { opacity: .85; transform: translateY(-3px); }
   }
 
-  #bookit-widget-popup { position:fixed; bottom:100px; right:30px; width:420px; height:620px; border-radius:20px; overflow:hidden; box-shadow:0 12px 40px rgba(0,0,0,.2); z-index:10001; display:none; flex-direction:column; border:1px solid #eee; } @media(max-width:768px){ #bookit-widget-popup { width:calc(100vw - 24px); height:65vh; right:12px; bottom:90px; } }
+  #bookit-widget-popup { position:fixed; bottom:100px; right:30px; width:420px; height:620px; border-radius:20px; overflow:hidden; box-shadow:0 12px 40px rgba(0,0,0,.2); z-index:10001; display:none; flex-direction:column; border:1px solid #eee; } @media(max-width:768px){ #bookit-widget-popup { width:calc(100dvw - 24px); height:60dvh; max-height:60dvh; right:12px; bottom:90px; box-sizing:border-box; } }
   #bookit-widget-popup.open { display:flex; }
   .widget-header { background:#FEE500; padding:.8rem 1.2rem; display:flex; align-items:center; justify-content:space-between; }
   .widget-header span { font-weight:800; color:#1a1150; font-size:.95rem; }
   .widget-close { background:none; border:none; font-size:1.2rem; cursor:pointer; color:#1a1150; }
   #bookit-widget-popup iframe { flex:1; border:none; width:100%; }
-  @media(max-width:768px){ #bookit-widget-popup { width:calc(100vw - 20px); right:10px; bottom:90px; } }
+
 </style>
 
   <button id="bookit-widget-btn" onclick="toggleWidget()">부킷<br>시연</button>
@@ -1273,6 +1273,16 @@
   function toggleWidget(){
     var popup = document.getElementById('bookit-widget-popup');
     popup.classList.toggle('open');
+    if (window.innerWidth <= 768) {
+      if (popup.classList.contains('open')) {
+        var h = window.innerHeight * 0.6;
+        popup.style.height = h + 'px';
+        popup.style.maxHeight = h + 'px';
+      } else {
+        popup.style.height = '';
+        popup.style.maxHeight = '';
+      }
+    }
   }
 </script>
 <script src="https://bookit.ai.kr/widget/widget.js"></script>
